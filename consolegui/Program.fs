@@ -81,5 +81,5 @@ let rec mainLoop state =
         |> mainLoop
 
 [<EntryPoint>]
-let main argv =
+let main _ =
     mainLoop (None, [])
