@@ -40,10 +40,13 @@ let save (recipes :T list) =
 
 let load () :T list =
     // TODO: settings record for file name
-    let save :SaveFile =
-        File.ReadAllText "recipes.json"
-        |> Json.parse
-        |> Json.deserialize
-    match unwrap save with
-    | Some recipes -> recipes
-    | None -> []
+    try
+        let save :SaveFile =
+            File.ReadAllText "recipes.json"
+            |> Json.parse
+            |> Json.deserialize
+        match unwrap save with
+        | Some recipes -> recipes
+        | None -> []
+    with
+    | :? FileNotFoundException -> []
