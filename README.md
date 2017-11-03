@@ -10,7 +10,8 @@ This project intends to provide a tool for managing own recipes.
 2. Type 'help' and have a look at your options.
 
 ## Development
-[![Build Status (Unix)](https://travis-ci.org/NicoVIII/CompleteInformation.svg?branch=master)](https://travis-ci.org/NicoVIII/QuizPresenter)
+[![Build Status (Windows)](https://img.shields.io/appveyor/ci/NicoVIII/completeinformation/master.svg?logo=appveyor&label=build%20(windows))](https://ci.appveyor.com/project/NicoVIII/completeinformation)
+[![Build Status (Unix)](https://img.shields.io/travis/NicoVIII/CompleteInformation.svg?label=build%20(unix))](https://travis-ci.org/NicoVIII/QuizPresenter)
 [![GitHub issues](https://img.shields.io/github/issues/NicoVIII/CompleteInformation.svg)](https://github.com/NicoVIII/QuizPresenter/issues)
 
 ### Versioning
