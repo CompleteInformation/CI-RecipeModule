@@ -10,9 +10,9 @@ This project intends to provide a tool for managing own recipes.
 2. Type 'help' and have a look at your options.
 
 ## Development
-[![Build Status (Windows)](https://img.shields.io/appveyor/ci/NicoVIII/completeinformation/master.svg?logo=appveyor&label=build%20(windows))](https://ci.appveyor.com/project/NicoVIII/completeinformation)
-[![Build Status (Unix)](https://img.shields.io/travis/NicoVIII/CompleteInformation.svg?label=build%20(unix))](https://travis-ci.org/NicoVIII/QuizPresenter)
-[![GitHub issues](https://img.shields.io/github/issues/NicoVIII/CompleteInformation.svg)](https://github.com/NicoVIII/QuizPresenter/issues)
+[![Build Status (Windows)](https://img.shields.io/appveyor/ci/NicoVIII/CompleteInformation.svg?logo=appveyor&label=build%20(windows))](https://ci.appveyor.com/project/NicoVIII/CompleteInformation)
+[![Build Status (Unix)](https://img.shields.io/travis/NicoVIII/CompleteInformation.svg?label=build%20(unix))](https://travis-ci.org/NicoVIII/CompleteInformation)
+[![GitHub issues](https://img.shields.io/github/issues/NicoVIII/CompleteInformation.svg)](https://github.com/NicoVIII/CompleteInformation/issues)
 
 ### Versioning
 I will try to stick to Semantic Versioning 2.0.0 (http://semver.org/spec/v2.0.0.html).
