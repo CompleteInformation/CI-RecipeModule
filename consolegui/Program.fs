@@ -17,14 +17,17 @@ let (|GreaterZeroInt|_|) x =
 let (|GreaterOne|NotGreaterOne|) x = if x > 0 then GreaterOne x else NotGreaterOne x
 
 let list recipeList =
-    let rec helper recipeList index =
-        match recipeList with
-        | [] -> ()
-        | recipe::tail ->
-            Recipe.getName recipe
-            |> printfn " %i: %s" index
-            helper tail (index+1)
-    helper recipeList 1
+    match List.length recipeList with
+    | 0 -> printfn "No recipes."
+    | _ ->
+        let rec helper recipeList index =
+            match recipeList with
+            | [] -> ()
+            | recipe::tail ->
+                Recipe.getName recipe
+                |> printfn " %i: %s" index
+                helper tail (index+1)
+        helper recipeList 1
 
 let rec load recipeList index =
     match index with
@@ -47,32 +50,30 @@ let rec load recipeList index =
 
 let showHelp() =
     printfn "\nCompleteInformation - Recipes\n"
-    printfn " Commands:"
-    printfn "  General:"
-    printfn "   help - Show this help page"
-    printfn "   save - Saves changes"
-    printfn "   quit - Saves changes and exits program"
+    printfn "Commands:"
+    printfn " General:"
+    printfn "  help - Show this help page"
+    printfn "  save - Saves changes"
+    printfn "  quit - Saves changes and exits program"
     printfn ""
-    printfn "  Recipe organisation:"
-    printfn "   list      - Shows a list of all recipes"
-    printfn "   load <nr> - Loads the recipe with the given nr from list command"
-    printfn "   show      - Shows the loaded recipe"
-    printfn "   unload    - Unloads loaded recipe"
+    printfn " Recipe organisation:"
+    printfn "  list      - Shows a list of all recipes"
+    printfn "  load <nr> - Loads the recipe with the given nr from list command"
+    printfn "  show      - Shows the loaded recipe"
+    printfn "  unload    - Unloads loaded recipe"
     printfn ""
-    printfn "  Recipe manipulation:"
-    printfn "   create <name>      - Creates a new recipe with given name and opens it for further editing"
-    printfn "   ingredients"
-    printfn "     add <ingredient> - Adds ingredient to loaded recipe"
-    printfn "     clear            - Removes all ingredients from recipe"
-    printfn "   name set <name>    - Set a name for the loaded recipe"
-    printfn "   text set <text>    - Set a recipe text for the loaded recipe"
-    printfn ""
+    printfn " Recipe manipulation:"
+    printfn "  create <name>      - Creates a new recipe with given name and opens it for further editing"
+    printfn "  ingredients"
+    printfn "    add <ingredient> - Adds ingredient to loaded recipe"
+    printfn "    clear            - Removes all ingredients from recipe"
+    printfn "  name set <name>    - Set a name for the loaded recipe"
+    printfn "  text set <text>    - Set a recipe text for the loaded recipe"
 
 let unload state =
     let (active, recipeList) = state
     match active with
     | Some recipe ->
-        printfn " Unloaded recipe."
         recipe::recipeList
     | None -> recipeList
 
@@ -82,42 +83,42 @@ let handleInput state input =
     | (("create", [name]), _) ->
         let recipeList = unload state
         let recipe = Recipe.create name
-        printfn " New recipe created and loaded."
+        printfn "New recipe created and loaded."
         (Some recipe, recipeList)
     | (("help", []), _) ->
         showHelp()
         state
     | (("ingredients", ["add";ingredient]), Some recipe) ->
         let recipe = Recipe.addIngredient recipe ingredient
-        printfn " Ingredient added."
+        printfn "Ingredient added."
         (Some recipe, recipeList)
     | (("ingredients", ["clear"]), Some recipe) ->
         let recipe = Recipe.clearIngredients recipe
-        printfn " Ingredients cleared."
+        printfn "Ingredients cleared."
         (Some recipe, recipeList)
     | (("list", []), _) ->
         let recipeList = unload state
         list recipeList
-        (None, recipeList)
+        state
     | (("load", [index]), _) ->
         let recipeList = unload state
         let state = load recipeList index
         match state with
         | (Some recipe, _) ->
             Recipe.getName recipe
-            |> printfn " Loaded recipe '%s'"
+            |> printfn "Loaded recipe '%s'"
         | (None, _) -> ()
         state
     | (("name", ["set";name]), Some recipe) ->
         let recipe = Recipe.setName recipe name
-        printfn " New name set."
+        printfn "New name set."
         (Some recipe, recipeList)
     | (("show", []), Some recipe) ->
         Recipe.getName recipe |> printfn "\n%s\n"
         printfn "Ingredients:"
         Recipe.getIngredients recipe |> List.iter (printfn " %s")
         printfn "\nText:"
-        Recipe.getText recipe |> printfn "%s\n"
+        Recipe.getText recipe |> printfn "%s"
         state
     | (("save", []), _) ->
         unload state
@@ -125,15 +126,17 @@ let handleInput state input =
         state
     | (("text", ["set"; text]), Some recipe) ->
         let recipe = Recipe.setText recipe text
-        printfn " New text set."
+        printfn "New text set."
         (Some recipe, recipeList)
     | (("unload", []), Some recipe) ->
+        printfn "Recipe unloaded."
         (None, recipe::recipeList)
     | _ ->
-        printfn " Invalid input, use help to get a overview over valid commands. Maybe you did not load a recipe or used a wrong amount of arguments?"
+        printfn "Invalid input, use help to get a overview over valid commands. Maybe you did not load a recipe or used a wrong amount of arguments?"
         state
 
 let rec mainLoop state =
+    printf "> "
     let input = Console.ReadLine()
     match input with
     | "quit" ->
@@ -147,4 +150,5 @@ let rec mainLoop state =
 [<EntryPoint>]
 let main _ =
     let recipeList = Saving.load()
+    printfn ""
     mainLoop (None, recipeList)
