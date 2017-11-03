@@ -11,10 +11,14 @@ module Recipe =
         }
         static member ToJson (x:T) = json {
             do! Json.write "name" x.name
+            do! Json.write "ingredients" x.ingredients
+            do! Json.write "recipetext" x.recipetext
         }
-        static member FromJson (x:T) = json {
+        static member FromJson (_:T) = json {
             let! n = Json.read "name"
-            return { name = n; ingredients = []; recipetext = None }
+            let! i = Json.read "ingredients"
+            let! r = Json.read "recipetext"
+            return { name = n; ingredients = i; recipetext = r }
         }
 
     let createEmpty() = {
@@ -42,11 +46,3 @@ module Recipe =
         match recipe.recipetext with
         | Some text -> text
         | None -> ""
-
-    let serialize (recipe:T) =
-        Json.serialize recipe
-        |> Json.format
-
-    let deserialize (json:string) :T =
-        Json.parse json
-        |> Json.deserialize

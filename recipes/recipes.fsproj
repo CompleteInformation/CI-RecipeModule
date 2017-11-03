@@ -5,6 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Types.fs" />
+    <Compile Include="Saving.fs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Chiron" Version="6.2.1" />
