@@ -1,66 +1,65 @@
 module CompleteInformation.ConsoleGUI.Main
 
-open CompleteInformation.ConsoleGui.Helper.String
-open CompleteInformation.Recipes.Types.Recipe
+open CompleteInformation.ConsoleGui.Helper.Console
+open CompleteInformation.Recipes.Types
 open System
-
-let splitCommandAndArguments input =
-    let partList =
-        explode input
-        |> List.fold
-            (fun args a ->
-                match (args, a) with
-                | ((list, false), '"') ->
-                    (list, true)
-                | ((list, true), '"') ->
-                    (list, false)
-                | ((list, false), ' ') ->
-                    ([]::list, false)
-                | ((head::tail, flag), a) ->
-                    ((a::head)::tail, flag)
-                | (([], flag), a) ->
-                    ([[a]], flag)
-            )
-            ([[]], false)
-        |> fst
-        |> List.map (List.rev >> implode)
-        |> List.rev
-
-    match partList with
-    | [] -> ("", [])
-    | command::arguments -> (command, arguments)
+open System.IO
 
 let showHelp() =
     printfn "\nCompleteInformation - Recipes\n"
     printfn "Commands:"
+    printfn "General:"
+    printfn "help - Show this help page"
+    printfn "quit - Exit program"
+    printfn ""
+    printfn "Recipe manipulation:"
     printfn "create                       - Creates a new recipe and opens it for further editing"
-    printfn "help                         - Show this help page"
     printfn "ingredients add <ingredient> - Adds given ingredient"
     printfn "name set <name>              - Set a name for the loaded recipe"
-    printfn "quit                         - Exit program\n"
     printfn "show                         - Shows the actually loaded recipe"
     printfn "unload                       - Unloads loaded recipe"
+    printfn ""
+    printfn "I/O:"
+    printfn "load <file> - Loads a recipe from given file"
+    printfn "save <file> - Saves the actually loaded recipe to given file"
+    printfn ""
+
+let unload state =
+    let (active, recipeList) = state
+    match active with
+    | Some recipe -> recipe::recipeList
+    | None -> recipeList
 
 let handleInput state input =
     let (active, recipeList) = state
     match (splitCommandAndArguments input, active) with
     | (("create", []), _) ->
-        let recipe = createEmptyRecipe()
+        let recipe = Recipe.createEmpty()
         printfn "New recipe created and loaded"
         (Some recipe, recipeList)
     | (("name", ["set";name]), Some recipe) ->
-        let recipe = setName recipe name
+        let recipe = Recipe.setName recipe name
         printfn "New name set"
         (Some recipe, recipeList)
     | (("ingredients", ["add";ingredient]), Some recipe) ->
-        let recipe = addIngredient recipe ingredient
+        let recipe = Recipe.addIngredient recipe ingredient
+        (Some recipe, recipeList)
+    | (("load", [file]), _) ->
+        let recipeList = unload state
+        let recipe =
+            File.ReadAllText file
+            |> Recipe.deserialize
         (Some recipe, recipeList)
     | (("show", []), Some recipe) ->
-        getName recipe |> printfn "\n%s"
+        Recipe.getName recipe |> printfn "\n%s"
         printfn "Ingredients:"
-        getIngredients recipe |> List.iter (printfn "%s")
+        Recipe.getIngredients recipe |> List.iter (printfn "%s")
         printfn "Text:"
-        getText recipe |> printfn "%s\n"
+        Recipe.getText recipe |> printfn "%s\n"
+        state
+    | (("save", [file]), Some recipe) ->
+        let text = Recipe.serialize recipe
+        File.WriteAllText (file, text)
         state
     | (("unload", []), Some recipe) ->
         printfn "Recipe unloaded"
@@ -69,7 +68,7 @@ let handleInput state input =
         showHelp()
         state
     | _ ->
-        printfn "Invalid input, use help to get a overview over valid commands"
+        printfn "Invalid input, use help to get a overview over valid commands. Maybe you did not load a recipe or used a wrong amount of arguments?"
         state
 
 let rec mainLoop state =

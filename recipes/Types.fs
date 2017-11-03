@@ -1,13 +1,23 @@
 namespace CompleteInformation.Recipes.Types
 
-module Recipe =
-    type T = {
-        name: string;
-        ingredients: string list;
-        recipetext: string option;
-    }
+open Chiron
 
-    let createEmptyRecipe () = {
+module Recipe =
+    type T =
+        {
+            name: string;
+            ingredients: string list;
+            recipetext: string option;
+        }
+        static member ToJson (x:T) = json {
+            do! Json.write "name" x.name
+        }
+        static member FromJson (x:T) = json {
+            let! n = Json.read "name"
+            return { name = n; ingredients = []; recipetext = None }
+        }
+
+    let createEmpty() = {
         name = "";
         ingredients = [];
         recipetext = None;
@@ -32,3 +42,11 @@ module Recipe =
         match recipe.recipetext with
         | Some text -> text
         | None -> ""
+
+    let serialize (recipe:T) =
+        Json.serialize recipe
+        |> Json.format
+
+    let deserialize (json:string) :T =
+        Json.parse json
+        |> Json.deserialize
