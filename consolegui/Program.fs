@@ -60,10 +60,12 @@ let showHelp() =
     printfn "   unload    - Unloads loaded recipe"
     printfn ""
     printfn "  Recipe manipulation:"
-    printfn "   create                       - Creates a new recipe and opens it for further editing"
-    printfn "   ingredients add <ingredient> - Adds given ingredient"
-    printfn "   name set <name>              - Set a name for the loaded recipe"
-    printfn "   text set <text>              - Set a recipe text for the loaded recipe"
+    printfn "   create <name>      - Creates a new recipe with given name and opens it for further editing"
+    printfn "   ingredients"
+    printfn "     add <ingredient> - Adds ingredient to loaded recipe"
+    printfn "     clear            - Removes all ingredients from recipe"
+    printfn "   name set <name>    - Set a name for the loaded recipe"
+    printfn "   text set <text>    - Set a recipe text for the loaded recipe"
     printfn ""
 
 let unload state =
@@ -77,10 +79,10 @@ let unload state =
 let handleInput state input =
     let (active, recipeList) = state
     match (splitCommandAndArguments input, active) with
-    | (("create", []), _) ->
+    | (("create", [name]), _) ->
         let recipeList = unload state
-        let recipe = Recipe.createEmpty()
-        printfn " New recipe created and loaded"
+        let recipe = Recipe.create name
+        printfn " New recipe created and loaded."
         (Some recipe, recipeList)
     | (("help", []), _) ->
         showHelp()
@@ -88,6 +90,10 @@ let handleInput state input =
     | (("ingredients", ["add";ingredient]), Some recipe) ->
         let recipe = Recipe.addIngredient recipe ingredient
         printfn " Ingredient added."
+        (Some recipe, recipeList)
+    | (("ingredients", ["clear"]), Some recipe) ->
+        let recipe = Recipe.clearIngredients recipe
+        printfn " Ingredients cleared."
         (Some recipe, recipeList)
     | (("list", []), _) ->
         let recipeList = unload state
@@ -107,10 +113,10 @@ let handleInput state input =
         printfn " New name set."
         (Some recipe, recipeList)
     | (("show", []), Some recipe) ->
-        Recipe.getName recipe |> printfn "\n%s"
+        Recipe.getName recipe |> printfn "\n%s\n"
         printfn "Ingredients:"
-        Recipe.getIngredients recipe |> List.iter (printfn "%s")
-        printfn "Text:"
+        Recipe.getIngredients recipe |> List.iter (printfn " %s")
+        printfn "\nText:"
         Recipe.getText recipe |> printfn "%s\n"
         state
     | (("save", []), _) ->

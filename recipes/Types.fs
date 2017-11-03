@@ -21,8 +21,8 @@ module Recipe =
             return { name = n; ingredients = i; recipetext = r }
         }
 
-    let createEmpty() = {
-        name = "";
+    let create name = {
+        name = name;
         ingredients = [];
         recipetext = None;
     }
@@ -34,6 +34,9 @@ module Recipe =
 
     let addIngredient recipe ingredient =
         { recipe with ingredients = ingredient::recipe.ingredients }
+
+    let clearIngredients recipe =
+        { recipe with ingredients = [] }
 
     let getIngredients recipe = recipe.ingredients |> List.rev
 
