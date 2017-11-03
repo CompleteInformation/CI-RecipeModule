@@ -78,6 +78,7 @@ let handleInput state input =
     let (active, recipeList) = state
     match (splitCommandAndArguments input, active) with
     | (("create", []), _) ->
+        let recipeList = unload state
         let recipe = Recipe.createEmpty()
         printfn " New recipe created and loaded"
         (Some recipe, recipeList)
@@ -101,7 +102,6 @@ let handleInput state input =
             |> printfn " Loaded recipe '%s'"
         | (None, _) -> ()
         state
-
     | (("name", ["set";name]), Some recipe) ->
         let recipe = Recipe.setName recipe name
         printfn " New name set."
