@@ -1,6 +1,6 @@
 module CompleteInformation.ConsoleGUI.Main
 
-open CompleteInformation.ConsoleGui.Helper.Console
+open CompleteInformation.ConsoleGui
 open CompleteInformation.Recipes
 open CompleteInformation.Recipes.Types
 open System
@@ -68,7 +68,9 @@ let showHelp() =
     printfn "    add <ingredient> - Adds ingredient to loaded recipe"
     printfn "    clear            - Removes all ingredients from recipe"
     printfn "  name set <name>    - Set a name for the loaded recipe"
-    printfn "  text set <text>    - Set a recipe text for the loaded recipe"
+    printfn "  text"
+    printfn "    set        - Opens textmode in which you can enter the text for the recipe"
+    printfn "    set <text> - Sets the given text as recipe text"
 
 let unload state =
     let (active, recipeList) = state
@@ -79,7 +81,7 @@ let unload state =
 
 let handleInput state input =
     let (active, recipeList) = state
-    match (splitCommandAndArguments input, active) with
+    match (Helper.Console.splitCommandAndArguments input, active) with
     | (("create", [name]), _) ->
         let recipeList = unload state
         let recipe = Recipe.create name
@@ -124,6 +126,12 @@ let handleInput state input =
         unload state
         |> Saving.save
         state
+    | (("text", ["set"]), Some recipe) ->
+        let recipe =
+            Helper.Console.getText()
+            |> Recipe.setText recipe
+        printfn "New text set."
+        (Some recipe, recipeList)
     | (("text", ["set"; text]), Some recipe) ->
         let recipe = Recipe.setText recipe text
         printfn "New text set."

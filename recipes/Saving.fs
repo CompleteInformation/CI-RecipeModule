@@ -35,7 +35,7 @@ let save (recipes :T list) =
         recipes
         |> wrap
         |> Json.serialize
-        |> Json.format
+        |> Json.formatWith JsonFormattingOptions.Pretty
     File.WriteAllText ("recipes.json", text)
 
 let load () :T list =

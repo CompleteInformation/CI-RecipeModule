@@ -1,5 +1,7 @@
 namespace CompleteInformation.ConsoleGui.Helper
 
+open System
+
 module String =
     let (^) l r =
         sprintf "%s%s" l r
@@ -10,7 +12,7 @@ module String =
 
     /// Converts a list of characters into a string.
     let implode (xs:char list) =
-        let sb = System.Text.StringBuilder(xs.Length)
+        let sb = Text.StringBuilder(xs.Length)
         xs |> List.iter (sb.Append >> ignore)
         sb.ToString()
 
@@ -40,3 +42,17 @@ module Console =
         match partList with
         | [] -> ("", [])
         | command::arguments -> (command, arguments)
+
+    let getText() =
+        printfn "Enter text, to finish enter a ';;' line."
+        let rec helper text =
+            let input = Console.ReadLine()
+            match input with
+            | ";;" -> text
+            | _ ->
+                match text with
+                | "" -> helper input
+                | text ->
+                    sprintf "%s\n%s" text input
+                    |> helper
+        helper ""
