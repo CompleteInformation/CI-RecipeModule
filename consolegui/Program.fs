@@ -159,4 +159,5 @@ let rec mainLoop state =
 let main _ =
     let recipeList = Saving.load()
     printfn ""
+    printfn "CompleteInformation - Recipes v0.1-alpha.1"
     mainLoop (None, recipeList)
