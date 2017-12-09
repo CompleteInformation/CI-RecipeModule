@@ -4,8 +4,18 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "build",
+            "label": "build",
             "command": "dotnet build consolegui/consolegui.fsproj",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish",
+            "command": "dotnet publish consolegui/consolegui.fsproj -c Release",
             "type": "shell",
             "group": "build",
             "presentation": {
