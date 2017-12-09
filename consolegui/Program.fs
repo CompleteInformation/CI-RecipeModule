@@ -1,8 +1,8 @@
-module CompleteInformation.ConsoleGUI.Main
+module NicoVIII.CompleteInformation.ConsoleGUI.Main
 
-open CompleteInformation.ConsoleGui
-open CompleteInformation.Recipes
-open CompleteInformation.Recipes.Types
+open NicoVIII.CompleteInformation.Modules.Recipe.GUI.Console
+open NicoVIII.CompleteInformation.Modules.Recipe
+open NicoVIII.CompleteInformation.Modules.Recipe.Types
 open System
 
 let (|Int|_|) str =

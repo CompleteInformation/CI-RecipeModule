@@ -1,4 +1,4 @@
-module CompleteInformation.Recipes.Saving
+module NicoVIII.CompleteInformation.Modules.Recipe.Saving
 
 open Chiron
 open System.IO

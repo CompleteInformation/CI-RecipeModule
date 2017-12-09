@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "buildConsole",
             "command": "dotnet build consolegui/consolegui.fsproj",
             "type": "shell",
             "group": "build",
@@ -14,8 +14,28 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "publish",
+            "label": "publishConsole",
             "command": "dotnet publish consolegui/consolegui.fsproj -c Release",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "buildAvalonia",
+            "command": "dotnet build avaloniagui/avaloniagui.csproj",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publishAvalonia",
+            "command": "dotnet publish avaloniagui/avaloniagui.csproj -c Release",
             "type": "shell",
             "group": "build",
             "presentation": {

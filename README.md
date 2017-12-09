@@ -6,7 +6,10 @@
 This project intends to provide a tool for managing own recipes.
 
 ## Usage
-1. Start consolegui.
+1. Start consolegui:  
+`dotnet consolegui.dll` (.NET Core)  
+`consolegui.exe` (Windows, self-contained)  
+`consolegui` (Linux/OSX, self-contained)
 2. Type 'help' and have a look at your options.
 
 ## Development
