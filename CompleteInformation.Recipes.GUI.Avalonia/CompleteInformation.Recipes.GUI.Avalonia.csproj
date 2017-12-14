@@ -12,12 +12,12 @@
         </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\recipes\recipes.fsproj" />
-    </ItemGroup>
-    <ItemGroup>
         <PackageReference Include="Avalonia" Version="0.5.1" />
         <PackageReference Include="Avalonia.Skia.Desktop" Version="0.5.1" />
         <PackageReference Include="Avalonia.Win32" Version="0.5.1" />
         <PackageReference Include="Avalonia.Gtk3" Version="0.5.1" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\CompleteInformation.Recipes\CompleteInformation.Recipes.fsproj" />
     </ItemGroup>
 </Project>

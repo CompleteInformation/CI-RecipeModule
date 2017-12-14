@@ -1,9 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
-    <ProjectReference Include="..\recipes\recipes.fsproj" />
-  </ItemGroup>
-
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
@@ -12,6 +8,10 @@
   <ItemGroup>
     <Compile Include="Helper.fs" />
     <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CompleteInformation.Recipes\CompleteInformation.Recipes.fsproj" />
   </ItemGroup>
 
 </Project>
