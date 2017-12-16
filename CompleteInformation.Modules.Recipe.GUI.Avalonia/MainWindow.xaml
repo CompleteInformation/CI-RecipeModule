@@ -1,12 +1,12 @@
-<Window x:Class="avaloniagui.MainWindow"
+<Window x:Class="CompleteInformation.Modules.Recipe.GUI.Avalonia.MainWindow"
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Types="clr-namespace:NicoVIII.CompleteInformation.Modules.Recipe.Types;assembly=recipes"
+        xmlns:API="clr-namespace:CompleteInformation.Modules.Recipe.API;assembly=CompleteInformation.Modules.Recipe"
         Title="Complete Information - Recipes">
     <Grid ColumnDefinitions="1*, 1*">
         <ListBox>
             <ListBox.DataTemplates>
-                <DataTemplate DataType="Types:Recipe">
+                <DataTemplate DataType="API:Recipe">
                     <Grid Name="grid" Cursor="Hand">
                     </Grid>
                 </DataTemplate>

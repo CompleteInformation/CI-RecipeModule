@@ -18,6 +18,6 @@
         <PackageReference Include="Avalonia.Gtk3" Version="0.5.1" />
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\CompleteInformation.Recipes\CompleteInformation.Recipes.fsproj" />
+      <ProjectReference Include="..\CompleteInformation.Modules.Recipe\CompleteInformation.Modules.Recipe.fsproj" />
     </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-namespace NicoVIII.CompleteInformation.Modules.Recipe.Types
+namespace CompleteInformation.Modules.Recipe.Types
 
 open Chiron
 

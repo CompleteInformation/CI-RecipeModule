@@ -1,7 +1,7 @@
 using Avalonia;
 using Avalonia.Markup.Xaml;
 
-namespace avaloniagui
+namespace CompleteInformation.Modules.Recipe.GUI.Avalonia
 {
     public class App : Application
     {

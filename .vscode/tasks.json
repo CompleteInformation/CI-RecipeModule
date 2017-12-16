@@ -5,7 +5,7 @@
     "tasks": [
         {
             "label": "buildConsole",
-            "command": "dotnet build consolegui/consolegui.fsproj",
+            "command": "dotnet build CompleteInformation.Modules.Recipe.GUI.Console/CompleteInformation.Modules.Recipe.GUI.Console.fsproj",
             "type": "shell",
             "group": "build",
             "presentation": {
@@ -15,7 +15,7 @@
         },
         {
             "label": "publishConsole",
-            "command": "dotnet publish consolegui/consolegui.fsproj -c Release",
+            "command": "dotnet publish CompleteInformation.Modules.Recipe.GUI.Console/CompleteInformation.Modules.Recipe.GUI.Console.fsproj -c Release",
             "type": "shell",
             "group": "build",
             "presentation": {
@@ -25,7 +25,7 @@
         },
         {
             "label": "buildAvalonia",
-            "command": "dotnet build avaloniagui/avaloniagui.csproj",
+            "command": "dotnet build CompleteInformation.Modules.Recipe.GUI.Avalonia/CompleteInformation.Modules.Recipe.GUI.Avalonia.csproj",
             "type": "shell",
             "group": "build",
             "presentation": {
@@ -35,7 +35,7 @@
         },
         {
             "label": "publishAvalonia",
-            "command": "dotnet publish avaloniagui/avaloniagui.csproj -c Release",
+            "command": "dotnet publish CompleteInformation.Modules.Recipe.GUI.Avalonia/CompleteInformation.Modules.Recipe.GUI.Avalonia.csproj -c Release",
             "type": "shell",
             "group": "build",
             "presentation": {
