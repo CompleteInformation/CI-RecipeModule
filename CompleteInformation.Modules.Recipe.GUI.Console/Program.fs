@@ -1,8 +1,8 @@
-module NicoVIII.CompleteInformation.ConsoleGUI.Main
+module CompleteInformation.ConsoleGUI.Main
 
-open NicoVIII.CompleteInformation.Modules.Recipe.GUI.Console
-open NicoVIII.CompleteInformation.Modules.Recipe
-open NicoVIII.CompleteInformation.Modules.Recipe.Types
+open CompleteInformation.Modules.Recipe.GUI.Console
+open CompleteInformation.Modules.Recipe
+open CompleteInformation.Modules.Recipe.Types
 open System
 
 let (|Int|_|) str =
@@ -54,7 +54,7 @@ let showHelp() =
     printfn " General:"
     printfn "  help - Show this help page"
     printfn "  save - Saves changes"
-    printfn "  quit - Saves changes and exits program"
+    printfn "  exit/quit - Saves changes and exits program"
     printfn ""
     printfn " Recipe organisation:"
     printfn "  list      - Shows a list of all recipes"
@@ -147,7 +147,7 @@ let rec mainLoop state =
     printf "> "
     let input = Console.ReadLine()
     match input with
-    | "quit" ->
+    | "quit" | "exit" ->
         unload state
         |> Saving.save
         0

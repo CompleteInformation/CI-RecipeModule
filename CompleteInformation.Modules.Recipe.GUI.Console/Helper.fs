@@ -1,4 +1,4 @@
-namespace NicoVIII.CompleteInformation.Modules.Recipe.GUI.Console.Helper
+namespace CompleteInformation.Modules.Recipe.GUI.Console.Helper
 
 open System
 
