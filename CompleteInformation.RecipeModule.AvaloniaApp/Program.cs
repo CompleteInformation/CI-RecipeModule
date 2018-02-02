@@ -1,7 +1,7 @@
 ﻿using System;
 using Avalonia;
 
-namespace CompleteInformation.Modules.Recipe.GUI.Avalonia
+namespace CompleteInformation.RecipeModule.AvaloniaApp
 {
     class Program
     {

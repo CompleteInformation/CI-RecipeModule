@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CompleteInformation.Modules.Recipe", "CompleteInformation.Modules.Recipe\CompleteInformation.Modules.Recipe.fsproj", "{6F3F79F8-1638-4A52-ACBA-9BA00B2C5302}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CompleteInformation.RecipeModule", "CompleteInformation.RecipeModule\CompleteInformation.RecipeModule.fsproj", "{6F3F79F8-1638-4A52-ACBA-9BA00B2C5302}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CompleteInformation.Modules.Recipe.GUI.Console", "CompleteInformation.Modules.Recipe.GUI.Console\CompleteInformation.Modules.Recipe.GUI.Console.fsproj", "{C5AEFB33-3CBF-4079-B7A8-DBC0E8E90FE8}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CompleteInformation.RecipeModule.GUI.Console", "CompleteInformation.RecipeModule.GUI.Console\CompleteInformation.RecipeModule.GUI.Console.fsproj", "{C5AEFB33-3CBF-4079-B7A8-DBC0E8E90FE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompleteInformation.Modules.Recipe.GUI.Avalonia", "CompleteInformation.Modules.Recipe.GUI.Avalonia\CompleteInformation.Modules.Recipe.GUI.Avalonia.csproj", "{1EABE6F8-99C9-493C-AF56-53096A620B45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompleteInformation.RecipeModule.GUI.Avalonia", "CompleteInformation.RecipeModule.GUI.Avalonia\CompleteInformation.RecipeModule.GUI.Avalonia.csproj", "{1EABE6F8-99C9-493C-AF56-53096A620B45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-namespace CompleteInformation.Modules.Recipe.GUI.Console.Helper
+namespace CompleteInformation.RecipeModule.GUI.Console.Helper
 
 open System
 

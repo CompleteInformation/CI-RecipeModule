@@ -1,13 +1,17 @@
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using System;
 
-namespace CompleteInformation.Modules.Recipe.GUI.Avalonia
+namespace CompleteInformation.RecipeModule.AvaloniaApp
 {
     public class MainWindow : Window
     {
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+            this.DataContext = new ViewModel();
+            this.AttachDevTools();
         }
 
         private void InitializeComponent()

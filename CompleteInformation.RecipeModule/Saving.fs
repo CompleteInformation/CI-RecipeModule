@@ -1,4 +1,4 @@
-module CompleteInformation.Modules.Recipe.Saving
+module CompleteInformation.RecipeModule.FSharp.Saving
 
 open Chiron
 open System.IO
