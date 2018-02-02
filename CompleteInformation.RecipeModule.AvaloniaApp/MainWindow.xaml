@@ -1,18 +1,20 @@
 <Window x:Class="CompleteInformation.RecipeModule.AvaloniaApp.MainWindow"
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Core="clr-namespace:CompleteInformation.RecipeModule;assembly=CompleteInformation.RecipeModule"
-        Title="Complete Information - Recipes">
+        xmlns:app="clr-namespace:CompleteInformation.RecipeModule.AvaloniaApp;assembly=CompleteInformation.RecipeModule.AvaloniaApp"
+        xmlns:core="clr-namespace:CompleteInformation.RecipeModule.Core;assembly=CompleteInformation.RecipeModule.Core"
+        Title="Complete Information - Recipes"
+        Height="660" Width="1024">
     <Grid ColumnDefinitions="1*, 1*">
-        <ListBox Items="{Binding Recipes}" Grid.Column="0">
+        <ListBox Items="{Binding Recipes}" SelectedItem="{Binding ActiveRecipe, Mode=TwoWay}" Grid.Column="0">
             <ListBox.DataTemplates>
-                <DataTemplate DataType="Core:Recipe">
+                <DataTemplate DataType="core:Recipe">
                     <Grid Name="grid" Cursor="Hand">
-                        <TextBlock Text="{Binding Name}" Grid.Column="0" Grid.Row="0"/>
+                        <TextBlock Text="{Binding Name}" Grid.Column="0"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.DataTemplates>
         </ListBox>
-        <TextBlock Text="{Binding Name}" Grid.Column="1"/>
+        <app:DetailView Grid.Column="1" DataContext="{Binding ActiveRecipe}"/>
     </Grid>
 </Window>

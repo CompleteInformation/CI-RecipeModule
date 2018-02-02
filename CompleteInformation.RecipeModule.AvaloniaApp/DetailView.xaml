@@ -1,0 +1,14 @@
+<UserControl x:Class="CompleteInformation.RecipeModule.AvaloniaApp.DetailView"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:core="clr-namespace:CompleteInformation.RecipeModule.Core;assembly=CompleteInformation.RecipeModule.Core">
+    <Grid Margin="5, 5, 5, 5">
+        <StackPanel Orientation="Vertical" Gap="8">
+            <TextBlock Text="{Binding Name}"/>
+            <StackPanel Orientation="Vertical" Gap="0">
+                <TextBlock Text="Text:"/>
+                <TextBlock Text="{Binding Text}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

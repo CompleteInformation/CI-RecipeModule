@@ -1,8 +1,8 @@
 module CompleteInformation.ConsoleGUI.Main
 
-open CompleteInformation.RecipeModule.GUI.Console
-open CompleteInformation.RecipeModule
-open CompleteInformation.RecipeModule.Types
+open CompleteInformation.RecipeModule.ConsoleApp
+open CompleteInformation.RecipeModule.Core.FSharp
+open CompleteInformation.RecipeModule.Core.FSharp.Types
 open System
 
 let (|Int|_|) str =
@@ -49,7 +49,7 @@ let rec load recipeList index =
 
 
 let showHelp() =
-    printfn "\nCompleteInformation - Recipes\n"
+    printfn "\nCompleteInformation - Recipes v0.1.0\n"
     printfn "Commands:"
     printfn " General:"
     printfn "  help - Show this help page"
@@ -159,5 +159,4 @@ let rec mainLoop state =
 let main _ =
     let recipeList = Saving.load()
     printfn ""
-    printfn "CompleteInformation - Recipes v0.1.0"
     mainLoop (None, recipeList)

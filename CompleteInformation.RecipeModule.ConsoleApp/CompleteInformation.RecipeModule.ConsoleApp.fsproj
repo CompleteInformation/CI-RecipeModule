@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CompleteInformation.RecipeModule\CompleteInformation.RecipeModule.fsproj" />
+    <ProjectReference Include="..\CompleteInformation.RecipeModule.Core\CompleteInformation.RecipeModule.Core.fsproj" />
   </ItemGroup>
 
 </Project>

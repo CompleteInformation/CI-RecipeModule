@@ -1,4 +1,4 @@
-module CompleteInformation.RecipeModule.FSharp.Saving
+module CompleteInformation.RecipeModule.Core.FSharp.Saving
 
 open Chiron
 open System.IO
@@ -33,6 +33,7 @@ let unwrap save =
 let save (recipes :T list) =
     let text =
         recipes
+        |> List.rev
         |> wrap
         |> Json.serialize
         |> Json.formatWith JsonFormattingOptions.Pretty
@@ -46,7 +47,7 @@ let load () :T list =
             |> Json.parse
             |> Json.deserialize
         match unwrap save with
-        | Some recipes -> recipes
+        | Some recipes -> List.rev recipes
         | None -> []
     with
     | :? FileNotFoundException -> []

@@ -1,4 +1,4 @@
-namespace CompleteInformation.RecipeModule.FSharp.Types
+namespace CompleteInformation.RecipeModule.Core.FSharp.Types
 
 open Chiron
 

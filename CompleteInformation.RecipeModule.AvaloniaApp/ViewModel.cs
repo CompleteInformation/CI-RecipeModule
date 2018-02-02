@@ -1,26 +1,32 @@
-using CompleteInformation.RecipeModule;
+using CompleteInformation.RecipeModule.Core;
+using System;
 
 namespace CompleteInformation.RecipeModule.AvaloniaApp
 {
-    public class ViewModel
+    public class ViewModel : ObservableObject
     {
-        public string Name
-        {
-            get
-            {
-                return "Lilu";
+        private static ViewModel instance;
+        public static ViewModel Instance {
+            get {
+                if (instance == null) {
+                    instance = new ViewModel();
+                }
+                return instance;
             }
         }
 
-        public Recipe[] Recipes
-        {
-            get
-            {
-                var recipe = new Recipe("Beispiel");
-                return new Recipe[] {
-                    recipe
-                };
+        private ViewModel() {
+            this.Recipes = Saving.LoadRecipes();
+            if (this.Recipes[0] != null) {
+                this.ActiveRecipe = this.Recipes[0];
             }
+        }
+
+        public Recipe[] Recipes { get; }
+        private Recipe activeRecipe;
+        public Recipe ActiveRecipe {
+            get => this.activeRecipe;
+            set => Update(ref this.activeRecipe, value);
         }
     }
 }
