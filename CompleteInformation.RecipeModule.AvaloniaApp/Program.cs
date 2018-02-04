@@ -1,5 +1,6 @@
-﻿using System;
-using Avalonia;
+﻿using Avalonia;
+using CompleteInformation.RecipeModule.AvaloniaApp.Windows;
+using System;
 
 namespace CompleteInformation.RecipeModule.AvaloniaApp
 {

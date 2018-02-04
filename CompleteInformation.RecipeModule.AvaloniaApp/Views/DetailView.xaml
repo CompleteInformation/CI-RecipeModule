@@ -1,0 +1,19 @@
+<UserControl x:Class="CompleteInformation.RecipeModule.AvaloniaApp.Views.DetailView"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converter="clr-namespace:CompleteInformation.RecipeModule.AvaloniaApp.Converter;assembly=CompleteInformation.RecipeModule.AvaloniaApp"
+        xmlns:core="clr-namespace:CompleteInformation.RecipeModule.Core;assembly=CompleteInformation.RecipeModule.Core">
+    <Grid Margin="5, 5, 5, 5">
+        <StackPanel Orientation="Vertical" Gap="8">
+            <TextBlock Classes="Title" Text="{Binding Name}"/>
+            <StackPanel Orientation="Vertical" Gap="0">
+                <TextBlock Classes="Heading" Text="Zutaten:"/>
+                <TextBlock Text="{Binding Ingredients, Converter={x:Static converter:ArrayToStringConverter.Instance}}"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Gap="0">
+                <TextBlock Classes="Heading" Text="Text:"/>
+                <TextBlock Text="{Binding Text}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

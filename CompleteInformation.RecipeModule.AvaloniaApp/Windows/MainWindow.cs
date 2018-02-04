@@ -1,9 +1,10 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using CompleteInformation.RecipeModule.AvaloniaApp.ViewModels;
 using System;
 
-namespace CompleteInformation.RecipeModule.AvaloniaApp
+namespace CompleteInformation.RecipeModule.AvaloniaApp.Windows
 {
     public class MainWindow : Window
     {

@@ -1,7 +1,7 @@
 using CompleteInformation.RecipeModule.Core;
 using System;
 
-namespace CompleteInformation.RecipeModule.AvaloniaApp
+namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 {
     public class ViewModel : ObservableObject
     {

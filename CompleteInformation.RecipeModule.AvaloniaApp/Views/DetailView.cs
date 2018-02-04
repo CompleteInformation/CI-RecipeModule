@@ -1,7 +1,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace CompleteInformation.RecipeModule.AvaloniaApp
+namespace CompleteInformation.RecipeModule.AvaloniaApp.Views
 {
     public class DetailView : UserControl
     {
