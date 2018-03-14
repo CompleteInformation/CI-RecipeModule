@@ -6,8 +6,10 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
     public class ViewModel : ObservableObject
     {
         private static ViewModel instance;
-        public static ViewModel Instance {
-            get {
+        public static ViewModel Instance
+        {
+            get
+            {
                 if (instance == null) {
                     instance = new ViewModel();
                 }
@@ -15,16 +17,18 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
             }
         }
 
-        private ViewModel() {
+        private ViewModel()
+        {
             this.Recipes = Saving.LoadRecipes();
-            if (this.Recipes[0] != null) {
+            if (this.Recipes.Length > 0) {
                 this.ActiveRecipe = this.Recipes[0];
             }
         }
 
         public Recipe[] Recipes { get; }
         private Recipe activeRecipe;
-        public Recipe ActiveRecipe {
+        public Recipe ActiveRecipe
+        {
             get => this.activeRecipe;
             set => Update(ref this.activeRecipe, value);
         }
