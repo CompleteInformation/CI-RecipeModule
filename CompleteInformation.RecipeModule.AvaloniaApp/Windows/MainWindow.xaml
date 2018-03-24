@@ -16,6 +16,12 @@
             </ListBox.DataTemplates>
         </ListBox>
         <GridSplitter Classes="vertical" Grid.Column="1" Width="6"/>
-        <views:DetailView Grid.Column="2" DataContext="{Binding ActiveRecipe}"/>
+        <Carousel Items="{Binding Views}" SelectedItem="{Binding CurrentView, Mode=TwoWay}" Grid.Column="2" IsVirtualized="False">
+            <Carousel.DataTemplates>
+                <DataTemplate DataType="views:DetailView">
+                    <views:DetailView DataContext="{Binding ActiveRecipe}"/>
+                </DataTemplate>
+            </Carousel.DataTemplates>
+        </Carousel>
     </Grid>
 </Window>
