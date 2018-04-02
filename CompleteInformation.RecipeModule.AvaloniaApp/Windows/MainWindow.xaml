@@ -21,6 +21,9 @@
                 <DataTemplate DataType="views:DetailView">
                     <views:DetailView/>
                 </DataTemplate>
+                <DataTemplate DataType="views:EditView">
+                    <views:EditView/>
+                </DataTemplate>
             </Carousel.DataTemplates>
         </Carousel>
     </Grid>

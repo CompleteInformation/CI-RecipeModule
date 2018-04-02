@@ -1,12 +1,12 @@
-<UserControl x:Class="CompleteInformation.RecipeModule.AvaloniaApp.Views.DetailView"
+<UserControl x:Class="CompleteInformation.RecipeModule.AvaloniaApp.Views.EditView"
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:converter="clr-namespace:CompleteInformation.RecipeModule.AvaloniaApp.Converter;assembly=CompleteInformation.RecipeModule.AvaloniaApp"
         xmlns:core="clr-namespace:CompleteInformation.RecipeModule.Core;assembly=CompleteInformation.RecipeModule.Core">
     <Grid Margin="5, 5, 5, 5">
         <StackPanel Orientation="Vertical" Gap="8">
+            <TextBlock Classes="Title" Text="EDIT"/>
             <StackPanel Orientation="Horizontal" Gap="4">
-                <Button Content="Bearbeiten" CommandParameter="{Binding}"></Button>
                 <TextBlock Classes="Title" Text="{Binding ActiveRecipe.Name}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Gap="0">

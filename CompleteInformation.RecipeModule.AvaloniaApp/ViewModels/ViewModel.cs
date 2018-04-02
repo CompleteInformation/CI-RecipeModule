@@ -51,6 +51,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 
             this.views = new Dictionary<string, UserControl>();
             this.views.Add("details", new DetailView());
+            this.views.Add("edit", new EditView());
 
             this.CurrentView = this.views["details"];
         }
