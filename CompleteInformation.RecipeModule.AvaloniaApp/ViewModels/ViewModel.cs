@@ -3,6 +3,7 @@ using CompleteInformation.RecipeModule.AvaloniaApp.Views;
 using Avalonia.Controls;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 {
@@ -28,7 +29,12 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
             set => Update(ref this.activeRecipe, value);
         }
 
-        public Dictionary<string, UserControl> Views { get; }
+        private Dictionary<string, UserControl> views;
+        public UserControl[] Views
+        {
+            get => this.views.Values.ToArray();
+        }
+
         private UserControl currentView;
         public UserControl CurrentView
         {
@@ -43,10 +49,10 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
                 this.ActiveRecipe = this.Recipes[0];
             }
 
-            this.Views = new Dictionary<string, UserControl>();
-            this.Views.Add("details", new DetailView());
+            this.views = new Dictionary<string, UserControl>();
+            this.views.Add("details", new DetailView());
 
-            this.CurrentView = this.Views["details"];
+            this.CurrentView = this.views["details"];
         }
     }
 }
