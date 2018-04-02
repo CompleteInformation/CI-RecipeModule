@@ -19,7 +19,7 @@
         <Carousel Items="{Binding Views}" SelectedItem="{Binding CurrentView, Mode=TwoWay}" Grid.Column="2" IsVirtualized="False">
             <Carousel.DataTemplates>
                 <DataTemplate DataType="views:DetailView">
-                    <views:DetailView DataContext="{Binding ActiveRecipe}"/>
+                    <views:DetailView/>
                 </DataTemplate>
             </Carousel.DataTemplates>
         </Carousel>

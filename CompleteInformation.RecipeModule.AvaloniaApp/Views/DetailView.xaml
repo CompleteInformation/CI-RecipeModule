@@ -8,11 +8,11 @@
             <TextBlock Classes="Title" Text="{Binding Name}"/>
             <StackPanel Orientation="Vertical" Gap="0">
                 <TextBlock Classes="Heading" Text="Zutaten:"/>
-                <TextBlock Text="{Binding Ingredients, Converter={x:Static converter:ArrayToStringConverter.Instance}}"/>
+                <TextBlock Text="{Binding ActiveRecipe.Ingredients, Converter={x:Static converter:ArrayToStringConverter.Instance}}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" Gap="0">
                 <TextBlock Classes="Heading" Text="Text:"/>
-                <TextBlock Text="{Binding Text}"/>
+                <TextBlock Text="{Binding ActiveRecipe.Text}"/>
             </StackPanel>
         </StackPanel>
     </Grid>
