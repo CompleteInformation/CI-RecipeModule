@@ -1,0 +1,30 @@
+<Window x:Class="CompleteInformation.RecipeModule.AvaloniaApp.Windows.MainWindow"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:core="clr-namespace:CompleteInformation.RecipeModule.Core;assembly=CompleteInformation.RecipeModule.Core"
+        xmlns:views="clr-namespace:CompleteInformation.RecipeModule.AvaloniaApp.Views;assembly=CompleteInformation.RecipeModule.AvaloniaApp"
+        Title="Complete Information - Recipes"
+        Height="660" Width="1024">
+  <Grid ColumnDefinitions="1*, Auto, 1*">
+    <ListBox Items="{Binding Recipes}" SelectedItem="{Binding ActiveRecipe, Mode=TwoWay}" Grid.Column="0">
+      <ListBox.DataTemplates>
+        <DataTemplate DataType="core:Recipe">
+          <Grid Name="grid" Cursor="Hand">
+            <TextBlock Text="{Binding Name}" Grid.Column="0"/>
+          </Grid>
+        </DataTemplate>
+      </ListBox.DataTemplates>
+    </ListBox>
+    <GridSplitter Classes="vertical" Grid.Column="1" Width="6"/>
+    <Carousel Items="{Binding Views}" SelectedItem="{Binding CurrentView, Mode=TwoWay}" Grid.Column="2" IsVirtualized="False">
+      <Carousel.DataTemplates>
+        <DataTemplate DataType="views:DetailView">
+          <views:DetailView/>
+        </DataTemplate>
+        <DataTemplate DataType="views:EditView">
+          <views:EditView/>
+        </DataTemplate>
+      </Carousel.DataTemplates>
+    </Carousel>
+  </Grid>
+</Window>
