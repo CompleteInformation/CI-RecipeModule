@@ -1,22 +1,20 @@
 <UserControl x:Class="CompleteInformation.RecipeModule.AvaloniaApp.Views.EditView"
-        xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:converter="clr-namespace:CompleteInformation.RecipeModule.AvaloniaApp.Converter;assembly=CompleteInformation.RecipeModule.AvaloniaApp"
-        xmlns:core="clr-namespace:CompleteInformation.RecipeModule.Core;assembly=CompleteInformation.RecipeModule.Core">
-    <Grid Margin="5, 5, 5, 5">
-        <StackPanel Orientation="Vertical" Gap="8">
-            <TextBlock Classes="Title" Text="EDIT"/>
-            <StackPanel Orientation="Horizontal" Gap="4">
-                <TextBlock Classes="Title" Text="{Binding ActiveRecipe.Name}"/>
-            </StackPanel>
-            <StackPanel Orientation="Vertical" Gap="0">
-                <TextBlock Classes="Heading" Text="Zutaten:"/>
-                <TextBlock Text="{Binding ActiveRecipe.Ingredients, Converter={x:Static converter:ArrayToStringConverter.Instance}}"/>
-            </StackPanel>
-            <StackPanel Orientation="Vertical" Gap="0">
-                <TextBlock Classes="Heading" Text="Text:"/>
-                <TextBlock Text="{Binding ActiveRecipe.Text}"/>
-            </StackPanel>
-        </StackPanel>
-    </Grid>
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:CompleteInformation.RecipeModule.AvaloniaApp.Converter;assembly=CompleteInformation.RecipeModule.AvaloniaApp"
+    xmlns:core="clr-namespace:CompleteInformation.RecipeModule.Core;assembly=CompleteInformation.RecipeModule.Core">
+  <Grid Margin="5, 5, 5, 5">
+    <StackPanel Orientation="Vertical" Gap="8">
+      <TextBlock Classes="Title" Text="{Binding ActiveRecipe.Name}"/>
+      <StackPanel Orientation="Vertical" Gap="0">
+        <TextBlock Classes="Heading" Text="Zutaten:"/>
+        <TextBlock Text="{Binding ActiveRecipe.Ingredients, Converter={x:Static converter:ArrayToStringConverter.Instance}}"/>
+      </StackPanel>
+      <StackPanel Orientation="Vertical" Gap="0">
+        <TextBlock Classes="Heading" Text="Text:"/>
+        <TextBox Text="{Binding ActiveRecipe.Text}"/>
+      </StackPanel>
+      <Button Content="Speichern" Command="{Binding ToggleEditMode}"></Button>
+    </StackPanel>
+  </Grid>
 </UserControl>

@@ -33,8 +33,32 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
             set => this.RaiseAndSetIfChanged(ref this.currentView, value);
         }
 
+        private bool editMode = false;
+        public bool EditMode
+        {
+            get => this.editMode;
+            set => this.RaiseAndSetIfChanged(ref this.editMode, value);
+        }
+
+        public ReactiveCommand ToggleEditMode { get; private set; }
+
+        protected void InitializeCommands()
+        {
+            ToggleEditMode = ReactiveCommand.Create(() =>
+            {
+                this.EditMode = !this.EditMode;
+                if (this.EditMode) {
+                    this.CurrentView = this.views["edit"];
+                } else {
+                    this.CurrentView = this.views["details"];
+                }
+            });
+        }
+
         public MainWindowViewModel()
         {
+            this.InitializeCommands();
+
             this.Recipes = Saving.LoadRecipes();
             if (this.Recipes.Length > 0) {
                 this.ActiveRecipe = this.Recipes[0];
