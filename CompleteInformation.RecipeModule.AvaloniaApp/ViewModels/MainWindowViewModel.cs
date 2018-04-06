@@ -22,12 +22,21 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
         private int selected;
         public Recipe SelectedRecipe
         {
-            get => this.Recipes[selected];
+            get
+            {
+                if (this.selected >= 0 && this.Recipes.Count() > this.selected) {
+                    return this.Recipes[selected];
+                } else {
+                    return null;
+                }
+            }
 
             set
             {
                 this.RaiseAndSetIfChanged(ref this.selected, Array.IndexOf(this.Recipes, value));
-                this.ActiveRecipe.SetFromRecipe(value);
+                if (value != null) {
+                    this.ActiveRecipe.SetFromRecipe(value);
+                }
             }
         }
 
@@ -54,10 +63,12 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
         }
 
         public ReactiveCommand ToggleEditMode { get; private set; }
+        public ReactiveCommand CreateNewRecipe { get; private set; }
+        public ReactiveCommand DeleteActiveRecipe { get; private set; }
 
         protected void InitializeCommands()
         {
-            ToggleEditMode = ReactiveCommand.Create(() =>
+            this.ToggleEditMode = ReactiveCommand.Create(() =>
             {
                 this.EditMode = !this.EditMode;
                 if (this.EditMode) {
@@ -67,6 +78,16 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
                     Saving.SaveRecipes(this.recipes);
                     this.CurrentView = this.views["details"];
                 }
+            });
+
+            this.CreateNewRecipe = ReactiveCommand.Create(() =>
+            {
+                // TODO:
+            });
+
+            this.DeleteActiveRecipe = ReactiveCommand.Create(() =>
+            {
+                // TODO:
             });
         }
 

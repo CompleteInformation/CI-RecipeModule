@@ -1,20 +1,27 @@
 <Window x:Class="CompleteInformation.RecipeModule.AvaloniaApp.Windows.MainWindow"
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converter="clr-namespace:CompleteInformation.RecipeModule.AvaloniaApp.Converter;assembly=CompleteInformation.RecipeModule.AvaloniaApp"
         xmlns:core="clr-namespace:CompleteInformation.RecipeModule.Core;assembly=CompleteInformation.RecipeModule.Core"
         xmlns:views="clr-namespace:CompleteInformation.RecipeModule.AvaloniaApp.Views;assembly=CompleteInformation.RecipeModule.AvaloniaApp"
         Title="Complete Information - Recipes"
         Height="660" Width="1024">
   <Grid ColumnDefinitions="1*, Auto, 1*">
-    <ListBox Items="{Binding Recipes}" SelectedItem="{Binding SelectedRecipe, Mode=TwoWay}" Grid.Column="0">
-      <ListBox.DataTemplates>
-        <DataTemplate DataType="core:Recipe">
-          <Grid Name="grid" Cursor="Hand">
-            <TextBlock Text="{Binding Name}" Grid.Column="0"/>
-          </Grid>
-        </DataTemplate>
-      </ListBox.DataTemplates>
-    </ListBox>
+    <Grid RowDefinitions="1*, Auto" Grid.Column="0">
+      <ListBox Items="{Binding Recipes}" SelectedItem="{Binding SelectedRecipe, Mode=TwoWay}" Grid.Row="0">
+        <ListBox.DataTemplates>
+          <DataTemplate DataType="core:Recipe">
+            <Grid Name="grid" Cursor="Hand">
+              <TextBlock Text="{Binding Name}" Grid.Column="0"/>
+            </Grid>
+          </DataTemplate>
+        </ListBox.DataTemplates>
+      </ListBox>
+      <StackPanel Orientation="Horizontal" Gap="4" Grid.Row="1" Margin="5,5,5,5">
+        <Button Content="Neu anlegen" Command="{Binding CreateNewRecipe}"/>
+        <Button Content="Löschen" IsEnabled="{Binding SelectedRecipe, Converter={x:Static converter:IsNotNullConverter.Instance}}" Command="{Binding DeleteActiveRecipe}"/>
+      </StackPanel>
+    </Grid>
     <GridSplitter Classes="vertical" Grid.Column="1" Width="6"/>
     <Carousel Items="{Binding Views}" SelectedItem="{Binding CurrentView, Mode=TwoWay}" Grid.Column="2" IsVirtualized="False">
       <Carousel.DataTemplates>

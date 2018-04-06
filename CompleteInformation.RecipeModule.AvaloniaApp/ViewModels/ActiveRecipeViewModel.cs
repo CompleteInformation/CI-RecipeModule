@@ -32,10 +32,14 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 
         public void SetFromRecipe(Recipe recipe)
         {
-            this.Set = true;
-            this.Name = recipe.Name;
-            this.ingredients = new string[0]; // TODO:
-            this.Text = recipe.Text;
+            if (recipe != null) {
+                this.Set = true;
+                this.Name = recipe.Name;
+                this.ingredients = new string[0]; // TODO:
+                this.Text = recipe.Text;
+            } else {
+                this.Set = false;
+            }
         }
 
         public void SaveToRecipe(ref Recipe recipe)
@@ -45,6 +49,14 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
                 //recipe.Ingredients = this.Ingredients; // TODO:
                 recipe.Text = this.Text;
             }
+        }
+
+        public Recipe GetRecipe()
+        {
+            Recipe recipe = new Recipe(this.Name);
+            //recipe.Ingredients = this.Ingredients; // TODO:
+            recipe.Text = this.Text;
+            return recipe;
         }
     }
 }

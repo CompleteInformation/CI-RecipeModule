@@ -14,8 +14,11 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.Converter
             if (targetType != typeof(string)) {
                 throw new InvalidOperationException("The target must be a String");
             }
-
-            return String.Join("\r\n", (string[])value);
+            if (value != null) {
+                return String.Join("\r\n", (string[])value);
+            } else {
+                return "";
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
