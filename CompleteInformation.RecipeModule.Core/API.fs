@@ -13,6 +13,7 @@ type Recipe(wrapped) =
         and set value = wrapped <- FRecipe.setName wrapped value
     member __.Ingredients
         with get () = FRecipe.getIngredients wrapped |> List.toArray
+        and set value = wrapped <- FRecipe.setIngredients wrapped <| List.ofArray value
     member __.Text
         with get () = FRecipe.getText wrapped
         and set value = wrapped <- FRecipe.setText wrapped value

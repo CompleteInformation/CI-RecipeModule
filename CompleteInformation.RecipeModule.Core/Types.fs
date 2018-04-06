@@ -39,6 +39,8 @@ module Recipe =
         { recipe with ingredients = [] }
 
     let getIngredients recipe = recipe.ingredients |> List.rev
+    let setIngredients recipe ingredients =
+        { recipe with ingredients = ingredients |> List.rev }
 
     let setText (recipe:T) text =
         match text with

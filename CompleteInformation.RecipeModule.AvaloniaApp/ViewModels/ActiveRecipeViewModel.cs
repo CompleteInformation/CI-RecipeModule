@@ -1,14 +1,16 @@
 using ReactiveUI;
 using System;
+using System.Collections.Generic;
 
 using CompleteInformation.RecipeModule.Core;
+using CompleteInformation.RecipeModule.AvaloniaApp.Helper;
 
 namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 {
     public class ActiveRecipeViewModel : ReactiveObject
     {
         private string name = "";
-        private string[] ingredients = new string[0];
+        private IReactiveList<string> ingredients;
         private string text = "";
 
         // Observables
@@ -40,11 +42,10 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
             set => this.RaiseAndSetIfChanged(ref this.name, value);
         }
 
-        public string[] Ingredients
+        public IReactiveList<string> Ingredients
         {
             get => this.ingredients;
-
-            // TODO: implement setter for ingredients array
+            set => this.RaiseAndSetIfChanged(ref this.ingredients, value);
         }
 
         public string Text
@@ -78,7 +79,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
             if (recipe != null) {
                 this.Set = true;
                 this.Name = recipe.Name;
-                this.ingredients = new string[0]; // TODO:
+                this.Ingredients = new ReactiveList<string>(recipe.Ingredients);
                 this.Text = recipe.Text;
             } else {
                 this.Set = false;
@@ -89,7 +90,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
         {
             if (this.Set) {
                 recipe.Name = this.Name;
-                //recipe.Ingredients = this.Ingredients; // TODO:
+                recipe.Ingredients = ReactiveHelper.Instance.ReactiveListToArray(this.Ingredients, x => x.Length > 0);
                 recipe.Text = this.Text;
             }
         }
@@ -97,7 +98,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
         public Recipe GetAsRecipe()
         {
             Recipe recipe = new Recipe(this.Name);
-            //recipe.Ingredients = this.Ingredients; // TODO:
+            recipe.Ingredients = ReactiveHelper.Instance.ReactiveListToArray(this.Ingredients, x => x.Length > 0);
             recipe.Text = this.Text;
             return recipe;
         }

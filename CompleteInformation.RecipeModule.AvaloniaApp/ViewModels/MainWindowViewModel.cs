@@ -82,6 +82,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
         public ReactiveCommand ToggleEditMode { get; private set; }
         public ReactiveCommand CreateNewRecipe { get; private set; }
         public ReactiveCommand DeleteActiveRecipe { get; private set; }
+        public ReactiveCommand DeleteIngredientFromRecipe { get; private set; }
 
         protected void InitializeCommands()
         {
@@ -104,6 +105,11 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
                 this.Recipes.Remove(this.SelectedRecipe);
                 this.SelectedRecipe = null;
                 this.Save();
+            });
+
+            this.DeleteIngredientFromRecipe = ReactiveCommand.Create<string>(ingredient =>
+            {
+                this.ActiveRecipe.Ingredients.Remove(ingredient);
             });
         }
 
