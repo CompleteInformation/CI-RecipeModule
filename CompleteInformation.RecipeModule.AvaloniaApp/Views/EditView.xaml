@@ -5,7 +5,11 @@
     xmlns:core="clr-namespace:CompleteInformation.RecipeModule.Core;assembly=CompleteInformation.RecipeModule.Core">
   <Grid Margin="5, 5, 5, 5">
     <StackPanel Orientation="Vertical" Gap="8">
-      <TextBlock Classes="Title" Text="{Binding ActiveRecipe.Name}"/>
+      <TextBlock Classes="Error" IsVisible="{Binding ActiveRecipe.Invalid}" Text="{Binding ActiveRecipe.Error}"/>
+      <StackPanel Orientation="Vertical" Gap="0">
+        <TextBlock Classes="Heading" Text="Name:"/>
+        <TextBox Text="{Binding ActiveRecipe.Name, Mode=TwoWay}"/>
+      </StackPanel>
       <StackPanel Orientation="Vertical" Gap="0">
         <TextBlock Classes="Heading" Text="Zutaten:"/>
         <TextBlock Text="{Binding ActiveRecipe.Ingredients, Converter={x:Static converter:ArrayToStringConverter.Instance}}"/>
@@ -14,7 +18,7 @@
         <TextBlock Classes="Heading" Text="Text:"/>
         <TextBox MinHeight="100" MaxHeight="500" Height="200" Text="{Binding ActiveRecipe.Text, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap"/>
       </StackPanel>
-      <Button Content="Speichern" Command="{Binding ToggleEditMode}"></Button>
+      <Button Content="Speichern" IsEnabled="{Binding ActiveRecipe.Valid}" Command="{Binding ToggleEditMode}"></Button>
     </StackPanel>
   </Grid>
 </UserControl>

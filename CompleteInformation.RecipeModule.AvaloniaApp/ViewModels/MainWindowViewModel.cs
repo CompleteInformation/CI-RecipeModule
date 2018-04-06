@@ -12,14 +12,9 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private Recipe[] recipes;
-        public Recipe[] Recipes
-        {
-            get => this.recipes;
-            set => this.RaiseAndSetIfChanged(ref this.recipes, value);
-        }
+        public ReactiveList<Recipe> Recipes { get; }
 
-        private int selected;
+        private int selected = -1;
         public Recipe SelectedRecipe
         {
             get
@@ -33,7 +28,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 
             set
             {
-                this.RaiseAndSetIfChanged(ref this.selected, Array.IndexOf(this.Recipes, value));
+                this.RaiseAndSetIfChanged(ref this.selected, Array.IndexOf(this.Recipes.ToArray(), value));
                 if (value != null) {
                     this.ActiveRecipe.SetFromRecipe(value);
                 }
@@ -59,7 +54,22 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
         public bool EditMode
         {
             get => this.editMode;
-            set => this.RaiseAndSetIfChanged(ref this.editMode, value);
+
+            set
+            {
+                bool changed = this.editMode != value;
+                this.RaiseAndSetIfChanged(ref this.editMode, value);
+
+                if (changed) {
+                    if (this.EditMode) {
+                        this.CurrentView = this.views["edit"];
+                    } else {
+                        this.ActiveRecipe.SaveToRecipe(this.Recipes[this.selected]);
+                        Saving.SaveRecipes(this.Recipes.ToArray());
+                        this.CurrentView = this.views["details"];
+                    }
+                }
+            }
         }
 
         public ReactiveCommand ToggleEditMode { get; private set; }
@@ -71,42 +81,43 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
             this.ToggleEditMode = ReactiveCommand.Create(() =>
             {
                 this.EditMode = !this.EditMode;
-                if (this.EditMode) {
-                    this.CurrentView = this.views["edit"];
-                } else {
-                    this.ActiveRecipe.SaveToRecipe(ref this.Recipes[this.selected]);
-                    Saving.SaveRecipes(this.recipes);
-                    this.CurrentView = this.views["details"];
-                }
             });
 
             this.CreateNewRecipe = ReactiveCommand.Create(() =>
             {
-                // TODO:
+                Recipe created = new Recipe(""); // TODO: create empty constructor for Recipe
+                this.Recipes.Add(created);
+                this.EditMode = true;
+                this.SelectedRecipe = created;
             });
 
             this.DeleteActiveRecipe = ReactiveCommand.Create(() =>
             {
-                // TODO:
+                this.EditMode = false;
+                this.Recipes.Remove(this.SelectedRecipe);
+                this.SelectedRecipe = null;
             });
         }
 
-        public MainWindowViewModel()
+        protected void InitializeViews()
         {
-            this.ActiveRecipe = new ActiveRecipeViewModel();
-
-            this.InitializeCommands();
-
-            this.Recipes = Saving.LoadRecipes();
-            if (this.Recipes.Length > 0) {
-                this.SelectedRecipe = this.Recipes[0];
-            }
-
             this.views = new Dictionary<string, UserControl>();
             this.views.Add("details", new DetailView());
             this.views.Add("edit", new EditView());
 
             this.CurrentView = this.views["details"];
+        }
+
+        public MainWindowViewModel()
+        {
+            this.ActiveRecipe = new ActiveRecipeViewModel();
+            this.Recipes = new ReactiveList<Recipe>(Saving.LoadRecipes());
+            if (this.Recipes.Count > 0) {
+                this.SelectedRecipe = this.Recipes[0];
+            }
+
+            this.InitializeCommands();
+            this.InitializeViews();
         }
     }
 }

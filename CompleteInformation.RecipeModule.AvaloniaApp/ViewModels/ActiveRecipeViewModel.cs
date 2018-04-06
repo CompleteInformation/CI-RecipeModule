@@ -1,4 +1,5 @@
 using ReactiveUI;
+using System;
 
 using CompleteInformation.RecipeModule.Core;
 
@@ -6,16 +7,39 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 {
     public class ActiveRecipeViewModel : ReactiveObject
     {
+        private string name = "";
+        private string[] ingredients = new string[0];
+        private string text = "";
+
+        // Observables
+        private readonly ObservableAsPropertyHelper<string> error;
+        private readonly ObservableAsPropertyHelper<bool> valid;
+        private readonly ObservableAsPropertyHelper<bool> invalid;
+
+        // Properties
+        public string Error
+        {
+            get => this.error.Value;
+        }
+
+        public bool Valid
+        {
+            get => this.valid.Value;
+        }
+
+        public bool Invalid
+        {
+            get => this.invalid.Value;
+        }
+
         public bool Set { get; private set; }
 
-        private string name;
         public string Name
         {
             get => this.name;
             set => this.RaiseAndSetIfChanged(ref this.name, value);
         }
 
-        private string[] ingredients;
         public string[] Ingredients
         {
             get => this.ingredients;
@@ -23,11 +47,30 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
             // TODO: implement setter for ingredients array
         }
 
-        private string text;
         public string Text
         {
             get => this.text;
             set => this.RaiseAndSetIfChanged(ref this.text, value);
+        }
+
+        // Functions
+        public ActiveRecipeViewModel()
+        {
+            // Initialize Observables
+            this.WhenAnyValue(x => x.Name, x => x.Text, (name, text) =>
+            {
+                if (name.Length == 0) {
+                    return "Bitte gib einen Namen ein!";
+                }
+                // No error
+                else {
+                    return "";
+                }
+            }).ToProperty(this, x => x.Error, out error);
+
+            this.WhenAnyValue(x => x.Error, error => error.Length == 0).ToProperty(this, x => x.Valid, out valid);
+
+            this.WhenAnyValue(x => x.Valid, valid => !valid).ToProperty(this, x => x.Invalid, out invalid);
         }
 
         public void SetFromRecipe(Recipe recipe)
@@ -42,7 +85,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
             }
         }
 
-        public void SaveToRecipe(ref Recipe recipe)
+        public void SaveToRecipe(Recipe recipe)
         {
             if (this.Set) {
                 recipe.Name = this.Name;
@@ -51,7 +94,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
             }
         }
 
-        public Recipe GetRecipe()
+        public Recipe GetAsRecipe()
         {
             Recipe recipe = new Recipe(this.Name);
             //recipe.Ingredients = this.Ingredients; // TODO:
