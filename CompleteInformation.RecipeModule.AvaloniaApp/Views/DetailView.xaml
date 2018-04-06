@@ -7,8 +7,8 @@
     <StackPanel Orientation="Vertical" Gap="8">
       <StackPanel Orientation="Horizontal" Gap="4">
         <Button Content="Bearbeiten" Command="{Binding ToggleEditMode}"></Button>
-        <TextBlock Classes="Title" Text="{Binding ActiveRecipe.Name}"/>
       </StackPanel>
+      <TextBlock Classes="Title" Text="{Binding ActiveRecipe.Name}"/>
       <StackPanel Orientation="Vertical" Gap="0">
         <TextBlock Classes="Heading" Text="Zutaten:"/>
         <TextBlock Text="{Binding ActiveRecipe.Ingredients, Converter={x:Static converter:ArrayToStringConverter.Instance}}"/>

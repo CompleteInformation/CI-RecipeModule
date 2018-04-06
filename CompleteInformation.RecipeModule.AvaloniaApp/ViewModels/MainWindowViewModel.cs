@@ -12,9 +12,21 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public ReactiveList<Recipe> Recipes { get; }
-
+        private IReactiveList<Recipe> recipes;
+        private Dictionary<string, UserControl> views;
+        private bool editMode = false;
         private int selected = -1;
+        private UserControl currentView;
+
+        // Properties
+        public ActiveRecipeViewModel ActiveRecipe { get; set; }
+
+        public IReactiveList<Recipe> Recipes
+        {
+            get => this.recipes;
+            private set { this.RaiseAndSetIfChanged(ref this.recipes, value); }
+        }
+
         public Recipe SelectedRecipe
         {
             get
@@ -35,22 +47,17 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
             }
         }
 
-        public ActiveRecipeViewModel ActiveRecipe { get; set; }
-
-        private Dictionary<string, UserControl> views;
         public UserControl[] Views
         {
             get => this.views.Values.ToArray();
         }
 
-        private UserControl currentView;
         public UserControl CurrentView
         {
             get => this.currentView;
             set => this.RaiseAndSetIfChanged(ref this.currentView, value);
         }
 
-        private bool editMode = false;
         public bool EditMode
         {
             get => this.editMode;
@@ -65,7 +72,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
                         this.CurrentView = this.views["edit"];
                     } else {
                         this.ActiveRecipe.SaveToRecipe(this.Recipes[this.selected]);
-                        Saving.SaveRecipes(this.Recipes.ToArray());
+                        this.Save();
                         this.CurrentView = this.views["details"];
                     }
                 }
@@ -96,6 +103,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
                 this.EditMode = false;
                 this.Recipes.Remove(this.SelectedRecipe);
                 this.SelectedRecipe = null;
+                this.Save();
             });
         }
 
@@ -118,6 +126,11 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 
             this.InitializeCommands();
             this.InitializeViews();
+        }
+
+        public void Save()
+        {
+            Saving.SaveRecipes(this.Recipes.ToArray());
         }
     }
 }
