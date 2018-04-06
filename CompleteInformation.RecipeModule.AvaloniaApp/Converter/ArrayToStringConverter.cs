@@ -9,7 +9,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.Converter
     {
         public static readonly ArrayToStringConverter Instance = new ArrayToStringConverter();
 
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (targetType != typeof(string)) {
                 throw new InvalidOperationException("The target must be a String");
@@ -18,9 +18,9 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.Converter
             return String.Join("\r\n", (string[])value);
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("ArrayToStringConverter can only be used OneWay.");
         }
     }
 }
