@@ -12,13 +12,26 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public Recipe[] Recipes { get; }
-        private Recipe activeRecipe;
-        public Recipe ActiveRecipe
+        private Recipe[] recipes;
+        public Recipe[] Recipes
         {
-            get => this.activeRecipe;
-            set => this.RaiseAndSetIfChanged(ref this.activeRecipe, value);
+            get => this.recipes;
+            set => this.RaiseAndSetIfChanged(ref this.recipes, value);
         }
+
+        private int selected;
+        public Recipe SelectedRecipe
+        {
+            get => this.Recipes[selected];
+
+            set
+            {
+                this.RaiseAndSetIfChanged(ref this.selected, Array.IndexOf(this.Recipes, value));
+                this.ActiveRecipe.SetFromRecipe(value);
+            }
+        }
+
+        public ActiveRecipeViewModel ActiveRecipe { get; set; }
 
         private Dictionary<string, UserControl> views;
         public UserControl[] Views
@@ -50,6 +63,8 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
                 if (this.EditMode) {
                     this.CurrentView = this.views["edit"];
                 } else {
+                    this.ActiveRecipe.SaveToRecipe(ref this.Recipes[this.selected]);
+                    Saving.SaveRecipes(this.recipes);
                     this.CurrentView = this.views["details"];
                 }
             });
@@ -57,11 +72,13 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 
         public MainWindowViewModel()
         {
+            this.ActiveRecipe = new ActiveRecipeViewModel();
+
             this.InitializeCommands();
 
             this.Recipes = Saving.LoadRecipes();
             if (this.Recipes.Length > 0) {
-                this.ActiveRecipe = this.Recipes[0];
+                this.SelectedRecipe = this.Recipes[0];
             }
 
             this.views = new Dictionary<string, UserControl>();

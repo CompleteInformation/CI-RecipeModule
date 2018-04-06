@@ -15,7 +15,7 @@
       </StackPanel>
       <StackPanel Orientation="Vertical" Gap="0">
         <TextBlock Classes="Heading" Text="Text:"/>
-        <TextBlock Text="{Binding ActiveRecipe.Text}"/>
+        <TextBlock Text="{Binding ActiveRecipe.Text}" TextWrapping="Wrap"/>
       </StackPanel>
     </StackPanel>
   </Grid>

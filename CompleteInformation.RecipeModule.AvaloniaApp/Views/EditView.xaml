@@ -12,7 +12,7 @@
       </StackPanel>
       <StackPanel Orientation="Vertical" Gap="0">
         <TextBlock Classes="Heading" Text="Text:"/>
-        <TextBox Text="{Binding ActiveRecipe.Text}"/>
+        <TextBox MinHeight="100" MaxHeight="500" Height="200" Text="{Binding ActiveRecipe.Text, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap"/>
       </StackPanel>
       <Button Content="Speichern" Command="{Binding ToggleEditMode}"></Button>
     </StackPanel>

@@ -6,7 +6,7 @@
         Title="Complete Information - Recipes"
         Height="660" Width="1024">
   <Grid ColumnDefinitions="1*, Auto, 1*">
-    <ListBox Items="{Binding Recipes}" SelectedItem="{Binding ActiveRecipe, Mode=TwoWay}" Grid.Column="0">
+    <ListBox Items="{Binding Recipes}" SelectedItem="{Binding SelectedRecipe, Mode=TwoWay}" Grid.Column="0">
       <ListBox.DataTemplates>
         <DataTemplate DataType="core:Recipe">
           <Grid Name="grid" Cursor="Hand">
