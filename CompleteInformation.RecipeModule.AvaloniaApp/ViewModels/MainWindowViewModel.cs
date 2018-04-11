@@ -33,7 +33,8 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
             {
                 if (this.selected >= 0 && this.Recipes.Count() > this.selected) {
                     return this.Recipes[selected];
-                } else {
+                }
+                else {
                     return null;
                 }
             }
@@ -70,7 +71,8 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
                 if (changed) {
                     if (this.EditMode) {
                         this.CurrentView = this.views["edit"];
-                    } else {
+                    }
+                    else {
                         this.ActiveRecipe.SaveToRecipe(this.Recipes[this.selected]);
                         this.Save();
                         this.CurrentView = this.views["details"];

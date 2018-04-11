@@ -19,7 +19,8 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp
 
             if (type != null) {
                 return (Control)Activator.CreateInstance(type);
-            } else {
+            }
+            else {
                 return new TextBlock { Text = "Not Found: " + name };
             }
         }

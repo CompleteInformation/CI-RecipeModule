@@ -81,7 +81,8 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
                 this.Name = recipe.Name;
                 this.Ingredients = new ReactiveList<string>(recipe.Ingredients);
                 this.Text = recipe.Text;
-            } else {
+            }
+            else {
                 this.Set = false;
             }
         }

@@ -16,7 +16,8 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.Converter
             }
             if (value != null) {
                 return String.Join("\r\n", (string[])value);
-            } else {
+            }
+            else {
                 return "";
             }
         }
