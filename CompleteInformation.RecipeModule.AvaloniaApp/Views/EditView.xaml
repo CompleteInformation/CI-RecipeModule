@@ -15,7 +15,7 @@
         <ItemsControl.DataTemplates>
           <DataTemplate>
             <Grid ColumnDefinitions="1*, Auto" Margin="0, 5">
-              <TextBox Grid.Column="0" Text="{Binding}"/>
+              <TextBox Grid.Column="0" Text="{Binding Mode=TwoWay}"/>
               <StackPanel Orientation="Horizontal" Grid.Column="1" Gap="5">
                 <!--TODO: <Button Content="Löschen" Command="{Binding DeleteIngredientFromRecipe}" CommandParameter="{Binding}"/>-->
               </StackPanel>

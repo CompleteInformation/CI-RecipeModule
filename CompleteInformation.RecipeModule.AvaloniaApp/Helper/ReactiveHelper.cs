@@ -22,7 +22,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.Helper
 
         public T[] ReactiveListToArray<T>(IReactiveList<T> list)
         {
-            return this.ReactiveListToArray(list, x => true);
+            return this.ReactiveListToArray(list, _ => true);
         }
 
         public T[] ReactiveListToArray<T>(IReactiveList<T> list, Predicate<T> predicate)
