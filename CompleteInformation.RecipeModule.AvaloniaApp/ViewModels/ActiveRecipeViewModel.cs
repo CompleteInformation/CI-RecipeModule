@@ -89,7 +89,8 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 
         public Recipe GetAsRecipe()
         {
-            Recipe recipe = new Recipe(this.Name);
+            Recipe recipe = new Recipe();
+            recipe.Name = this.Name;
             recipe.Ingredients = ReactiveHelper.Instance.ReactiveListToArray(this.Ingredients, x => x.Length > 0);
             recipe.Text = this.Text;
             return recipe;

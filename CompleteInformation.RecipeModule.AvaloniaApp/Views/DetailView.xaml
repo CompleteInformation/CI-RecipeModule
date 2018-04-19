@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converter="clr-namespace:CompleteInformation.RecipeModule.AvaloniaApp.Converter;assembly=CompleteInformation.RecipeModule.AvaloniaApp"
     xmlns:core="clr-namespace:CompleteInformation.RecipeModule.Core;assembly=CompleteInformation.RecipeModule.Core">
-  <Grid Margin="5" IsVisible="{Binding SelectedRecipe, Converter={x:Static converter:IsNotNullConverter.Instance}}">
+  <Grid IsVisible="{Binding SelectedRecipe, Converter={x:Static converter:IsNotNullConverter.Instance}}">
     <StackPanel Orientation="Vertical" Gap="8">
       <StackPanel Orientation="Horizontal" Gap="4">
         <Button Content="Bearbeiten" Command="{Binding ToggleEditMode}"></Button>

@@ -6,7 +6,7 @@ module FSaving = CompleteInformation.RecipeModule.Core.FSharp.Saving
 type Recipe(wrapped) =
     let mutable wrapped = wrapped
 
-    new (name) = Recipe(FRecipe.create name)
+    new () = Recipe(FRecipe.create "")
 
     member __.Name
         with get () = FRecipe.getName wrapped

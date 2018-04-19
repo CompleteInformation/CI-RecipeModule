@@ -73,7 +73,9 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
                         this.CurrentView = this.views["edit"];
                     }
                     else {
-                        this.Recipes[this.selected] = this.ActiveRecipe.GetAsRecipe();
+                        Recipe changedRecipe = this.ActiveRecipe.GetAsRecipe();
+                        this.Recipes[this.selected] = changedRecipe;
+                        this.SelectedRecipe = changedRecipe;
                         this.Save();
                         this.CurrentView = this.views["details"];
                     }
@@ -88,7 +90,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 
         public void CreateNewRecipe()
         {
-            Recipe created = new Recipe(""); // TODO: create empty constructor for Recipe
+            Recipe created = new Recipe();
             this.EditMode = true;
             this.Recipes.Add(created);
             this.SelectedRecipe = created;
@@ -100,6 +102,11 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
             this.Recipes.Remove(this.SelectedRecipe);
             this.SelectedRecipe = null;
             this.Save();
+        }
+
+        public void AddIngredientToRecipe()
+        {
+            this.ActiveRecipe.Ingredients.Add("");
         }
 
         public void DeleteIngredientFromRecipe(string ingredient)

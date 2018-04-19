@@ -23,15 +23,17 @@
       </StackPanel>
     </Grid>
     <GridSplitter Classes="vertical" Grid.Column="1" Width="6"/>
-    <Carousel Items="{Binding Views}" SelectedItem="{Binding CurrentView, Mode=TwoWay}" Grid.Column="2" IsVirtualized="False">
-      <Carousel.DataTemplates>
-        <DataTemplate DataType="views:DetailView">
-          <views:DetailView/>
-        </DataTemplate>
-        <DataTemplate DataType="views:EditView">
-          <views:EditView/>
-        </DataTemplate>
-      </Carousel.DataTemplates>
-    </Carousel>
+    <ScrollViewer Padding="10" HorizontalScrollBarVisibility="Disabled" Grid.Column="2">
+      <Carousel Items="{Binding Views}" SelectedItem="{Binding CurrentView, Mode=TwoWay}" IsVirtualized="False">
+        <Carousel.DataTemplates>
+          <DataTemplate DataType="views:DetailView">
+            <views:DetailView/>
+          </DataTemplate>
+          <DataTemplate DataType="views:EditView">
+            <views:EditView/>
+          </DataTemplate>
+        </Carousel.DataTemplates>
+      </Carousel>
+    </ScrollViewer>
   </Grid>
 </Window>
