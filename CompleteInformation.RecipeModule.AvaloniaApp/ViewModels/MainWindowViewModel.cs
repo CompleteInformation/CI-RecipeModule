@@ -73,7 +73,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
                         this.CurrentView = this.views["edit"];
                     }
                     else {
-                        this.ActiveRecipe.SaveToRecipe(this.Recipes[this.selected]);
+                        this.Recipes[this.selected] = this.ActiveRecipe.GetAsRecipe();
                         this.Save();
                         this.CurrentView = this.views["details"];
                     }

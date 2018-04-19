@@ -87,15 +87,6 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
             }
         }
 
-        public void SaveToRecipe(Recipe recipe)
-        {
-            if (this.Set) {
-                recipe.Name = this.Name;
-                recipe.Ingredients = ReactiveHelper.Instance.ReactiveListToArray(this.Ingredients, x => x.Length > 0);
-                recipe.Text = this.Text;
-            }
-        }
-
         public Recipe GetAsRecipe()
         {
             Recipe recipe = new Recipe(this.Name);
