@@ -81,38 +81,30 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
             }
         }
 
-        public ReactiveCommand ToggleEditMode { get; private set; }
-        public ReactiveCommand CreateNewRecipe { get; private set; }
-        public ReactiveCommand DeleteActiveRecipe { get; private set; }
-        public ReactiveCommand DeleteIngredientFromRecipe { get; private set; }
-
-        protected void InitializeCommands()
+        public void ToggleEditMode()
         {
-            this.ToggleEditMode = ReactiveCommand.Create(() =>
-            {
-                this.EditMode = !this.EditMode;
-            });
+            this.EditMode = !this.EditMode;
+        }
 
-            this.CreateNewRecipe = ReactiveCommand.Create(() =>
-            {
-                Recipe created = new Recipe(""); // TODO: create empty constructor for Recipe
-                this.Recipes.Add(created);
-                this.EditMode = true;
-                this.SelectedRecipe = created;
-            });
+        public void CreateNewRecipe()
+        {
+            Recipe created = new Recipe(""); // TODO: create empty constructor for Recipe
+            this.EditMode = true;
+            this.Recipes.Add(created);
+            this.SelectedRecipe = created;
+        }
 
-            this.DeleteActiveRecipe = ReactiveCommand.Create(() =>
-            {
-                this.EditMode = false;
-                this.Recipes.Remove(this.SelectedRecipe);
-                this.SelectedRecipe = null;
-                this.Save();
-            });
+        public void DeleteActiveRecipe()
+        {
+            this.EditMode = false;
+            this.Recipes.Remove(this.SelectedRecipe);
+            this.SelectedRecipe = null;
+            this.Save();
+        }
 
-            this.DeleteIngredientFromRecipe = ReactiveCommand.Create<string>(ingredient =>
-            {
-                this.ActiveRecipe.Ingredients.Remove(ingredient);
-            });
+        public void DeleteIngredientFromRecipe(string ingredient)
+        {
+            this.ActiveRecipe.Ingredients.Remove(ingredient);
         }
 
         protected void InitializeViews()
@@ -132,7 +124,6 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
                 this.SelectedRecipe = this.Recipes[0];
             }
 
-            this.InitializeCommands();
             this.InitializeViews();
         }
 
