@@ -1,6 +1,4 @@
-namespace CompleteInformation.Recipes.Types
-
-open Chiron
+namespace CompleteInformation.RecipeModule.Core.FSharp.Types
 
 module Recipe =
     type T =
@@ -8,17 +6,6 @@ module Recipe =
             name: string;
             ingredients: string list;
             recipetext: string option;
-        }
-        static member ToJson (x:T) = json {
-            do! Json.write "name" x.name
-            do! Json.write "ingredients" x.ingredients
-            do! Json.write "recipetext" x.recipetext
-        }
-        static member FromJson (_:T) = json {
-            let! n = Json.read "name"
-            let! i = Json.read "ingredients"
-            let! r = Json.read "recipetext"
-            return { name = n; ingredients = i; recipetext = r }
         }
 
     let create name = {
@@ -39,6 +26,8 @@ module Recipe =
         { recipe with ingredients = [] }
 
     let getIngredients recipe = recipe.ingredients |> List.rev
+    let setIngredients recipe ingredients =
+        { recipe with ingredients = ingredients |> List.rev }
 
     let setText (recipe:T) text =
         match text with

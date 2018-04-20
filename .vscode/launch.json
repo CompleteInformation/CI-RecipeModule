@@ -5,11 +5,22 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": ".NET Core Launch (avalonia)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildAvalonia",
+            "program": "${workspaceRoot}/CompleteInformation.RecipeModule.AvaloniaApp/bin/Debug/netcoreapp2.0/CompleteInformation.RecipeModule.AvaloniaApp.dll",
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
             "name": ".NET Core Launch (console)",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "build",
-            "program": "${workspaceRoot}/consolegui/bin/Debug/netcoreapp2.0/consolegui.dll",
+            "preLaunchTask": "buildConsole",
+            "program": "${workspaceRoot}/CompleteInformation.RecipeModule.ConsoleApp/bin/Debug/netcoreapp2.0/CompleteInformation.RecipeModule.ConsoleApp.dll",
             "args": [],
             "cwd": "${workspaceRoot}",
             "stopAtEntry": false,
