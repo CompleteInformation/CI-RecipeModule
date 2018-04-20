@@ -14,7 +14,7 @@
         <ItemsControl Items="{Binding ActiveRecipe.Ingredients}">
           <ItemsControl.DataTemplates>
             <DataTemplate>
-              <TextBlock Text="{Binding}"/>
+              <TextBlock Text="{Binding Value}"/>
             </DataTemplate>
           </ItemsControl.DataTemplates>
         </ItemsControl>

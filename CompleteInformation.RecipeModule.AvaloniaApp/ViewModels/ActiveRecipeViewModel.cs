@@ -1,6 +1,7 @@
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using CompleteInformation.RecipeModule.Core;
 using CompleteInformation.RecipeModule.AvaloniaApp.Helper;
@@ -10,7 +11,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
     public class ActiveRecipeViewModel : ReactiveObject
     {
         private string name = "";
-        private IReactiveList<string> ingredients;
+        private IReactiveList<SimpleObservable<string>> ingredients;
         private string text = "";
 
         // Observables
@@ -42,7 +43,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
             set => this.RaiseAndSetIfChanged(ref this.name, value);
         }
 
-        public IReactiveList<string> Ingredients
+        public IReactiveList<SimpleObservable<string>> Ingredients
         {
             get => this.ingredients;
             set => this.RaiseAndSetIfChanged(ref this.ingredients, value);
@@ -79,7 +80,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
             if (recipe != null) {
                 this.Set = true;
                 this.Name = recipe.Name;
-                this.Ingredients = new ReactiveList<string>(recipe.Ingredients);
+                this.Ingredients = new ReactiveList<SimpleObservable<string>>(recipe.Ingredients.Select(x => new SimpleObservable<string>(x)));
                 this.Text = recipe.Text;
             }
             else {
@@ -91,7 +92,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
         {
             Recipe recipe = new Recipe();
             recipe.Name = this.Name;
-            recipe.Ingredients = ReactiveHelper.Instance.ReactiveListToArray(this.Ingredients, x => x.Length > 0);
+            recipe.Ingredients = ReactiveHelper.Instance.ReactiveListToArray(this.Ingredients, x => x.Length > 0, x => x.Value);
             recipe.Text = this.Text;
             return recipe;
         }

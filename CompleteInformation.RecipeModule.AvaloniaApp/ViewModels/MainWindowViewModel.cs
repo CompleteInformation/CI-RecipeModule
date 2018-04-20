@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using CompleteInformation.RecipeModule.AvaloniaApp.Helper;
 using CompleteInformation.RecipeModule.AvaloniaApp.Views;
 using CompleteInformation.RecipeModule.Core;
 
@@ -106,13 +107,14 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 
         public void AddIngredientToRecipe()
         {
-            this.ActiveRecipe.Ingredients.Add("");
+            this.ActiveRecipe.Ingredients.Add(new SimpleObservable<string>(""));
         }
 
-        public void DeleteIngredientFromRecipe(string ingredient)
+        // TODO:
+        /*public void DeleteIngredientFromRecipe(string ingredient)
         {
             this.ActiveRecipe.Ingredients.Remove(ingredient);
-        }
+        }*/
 
         protected void InitializeViews()
         {
