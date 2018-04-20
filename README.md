@@ -8,14 +8,11 @@ This project intends to provide a tool for managing own recipes.
 
 ## Usage
 1. Start application:  
+**AvaloniaApp (GUI):**  
+`dotnet CompleteInformation.RecipeModule.AvaloniaApp.dll`  
 **ConsoleApp:**  
-`dotnet CompleteInformation.RecipeModule.ConsoleApp.dll` (.NET Core)  
-`CompleteInformation.RecipeModule.ConsoleApp.dll.exe` (Windows, self-contained)  
-`CompleteInformation.RecipeModule.ConsoleApp.dll` (Linux/OSX, self-contained)  
-**AvaloniaApp:**  
-`dotnet CompleteInformation.RecipeModule.AvaloniaApp.dll` (.NET Core)  
-`CompleteInformation.RecipeModule.AvaloniaApp.exe` (Windows, self-contained)  
-`CompleteInformation.RecipeModule.AvaloniaApp` (Linux/OSX, self-contained)  
+`dotnet CompleteInformation.RecipeModule.ConsoleApp.dll`
+
 2. Begin to manage your recipes!  
 
     **Tip for ConsoleApp:**  
