@@ -1,7 +1,9 @@
 #!/bin/bash
 dotnet restore
 dotnet publish -c Release
-dotnet publish -c Release -r win-x86
-dotnet publish -c Release -r win-x64
-dotnet publish -c Release -r osx-x64
-dotnet publish -c Release -r linux-x64
+
+RELEASE_PATH="./CompleteInformation.RecipeModule.AvaloniaApp/bin/Release/netcoreapp2.0/publish"
+cp -r "CompleteInformation.RecipeModule.ConsoleApp/bin/Release/netcoreapp2.0/publish/." "$RELEASE_PATH"
+cp "README.md" "$RELEASE_PATH"
+cp "LICENSE.txt" "$RELEASE_PATH"
+zip -r ./release.zip $RELEASE_PATH
