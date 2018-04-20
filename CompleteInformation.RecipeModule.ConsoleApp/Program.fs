@@ -49,7 +49,7 @@ let rec load recipeList index =
 
 
 let showHelp() =
-    printfn "\nCompleteInformation - Recipes v0.1.0\n"
+    printfn "\nCompleteInformation - Recipes v0.2.0\n"
     printfn "Commands:"
     printfn " General:"
     printfn "  help - Show this help page"
