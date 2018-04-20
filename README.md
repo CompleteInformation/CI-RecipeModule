@@ -7,14 +7,19 @@
 This project intends to provide a tool for managing own recipes.
 
 ## Usage
-1. Start:  
+1. Start application:  
 **ConsoleApp:**  
-`dotnet consolegui.dll` (.NET Core)  
-`consolegui.exe` (Windows, self-contained)  
-`consolegui` (Linux/OSX, self-contained)  
+`dotnet CompleteInformation.RecipeModule.ConsoleApp.dll` (.NET Core)  
+`CompleteInformation.RecipeModule.ConsoleApp.dll.exe` (Windows, self-contained)  
+`CompleteInformation.RecipeModule.ConsoleApp.dll` (Linux/OSX, self-contained)  
 **AvaloniaApp:**  
-TODO
-2. Type 'help' and have a look at your options.
+`dotnet CompleteInformation.RecipeModule.AvaloniaApp.dll` (.NET Core)  
+`CompleteInformation.RecipeModule.AvaloniaApp.exe` (Windows, self-contained)  
+`CompleteInformation.RecipeModule.AvaloniaApp` (Linux/OSX, self-contained)  
+2. Begin to manage your recipes!  
+
+    **Tip for ConsoleApp:**  
+    Type 'help' and have a look at your options.
 
 ## Development
 [![Build Status (Windows)](https://img.shields.io/appveyor/ci/NicoVIII/CompleteInformation.svg?logo=appveyor&label=build%20(windows))](https://ci.appveyor.com/project/NicoVIII/CompleteInformation)
