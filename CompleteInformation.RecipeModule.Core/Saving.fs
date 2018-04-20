@@ -1,22 +1,17 @@
 module CompleteInformation.RecipeModule.Core.FSharp.Saving
 
-open Chiron
+open Newtonsoft.Json
 open System.IO
+open System.Runtime.Serialization
 open Types.Recipe
 
+[<DataContract>]
 type SaveFile =
     {
+        [<field: DataMember>]
         version: int;
+        [<field: DataMember>]
         recipes: T list;
-    }
-    static member ToJson (x:SaveFile) = json {
-        do! Json.write "version" x.version
-        do! Json.write "recipes" x.recipes
-    }
-    static member FromJson (_:SaveFile) = json {
-        let! v = Json.read "version"
-        let! r = Json.read "recipes"
-        return { version = v; recipes = r }
     }
 
 let wrap recipes =
@@ -35,8 +30,7 @@ let save (recipes :T list) =
         recipes
         |> List.rev
         |> wrap
-        |> Json.serialize
-        |> Json.formatWith JsonFormattingOptions.Pretty
+        |> JsonConvert.SerializeObject
     File.WriteAllText ("recipes.json", text)
 
 let load () :T list =
@@ -44,8 +38,7 @@ let load () :T list =
     try
         let save :SaveFile =
             File.ReadAllText "recipes.json"
-            |> Json.parse
-            |> Json.deserialize
+            |> JsonConvert.DeserializeObject<SaveFile>
         match unwrap save with
         | Some recipes -> List.rev recipes
         | None -> []
