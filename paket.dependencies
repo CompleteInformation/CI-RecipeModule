@@ -1,0 +1,7 @@
+storage: none
+source https://www.nuget.org/api/v2
+nuget FSharp.Core ~> 4.3
+nuget Microsoft.Composition ~> 1.0
+
+git git@github.com:CompleteInformation/CI-Core.git develop build: "build.sh", Packages: /CompleteInformation.Core/bin/Release/, OS: mono
+nuget CompleteInformation.Core
