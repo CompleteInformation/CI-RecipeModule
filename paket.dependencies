@@ -1,7 +1,8 @@
 storage: none
 source https://www.nuget.org/api/v2
+nuget Couchbase.Lite ~> 2.0
 nuget FSharp.Core ~> 4.3
 nuget Microsoft.Composition ~> 1.0
+nuget Newtonsoft.Json
 
-git git@github.com:CompleteInformation/CI-Core.git develop build: "build.sh", Packages: /CompleteInformation.Core/bin/Release/, OS: mono
-nuget CompleteInformation.Core
+git git@github.com:CompleteInformation/CI-Core.git develop

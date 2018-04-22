@@ -1,9 +1,15 @@
 module CompleteInformation.RecipeModule.Core.FSharp.Saving
 
+open CompleteInformation.Core.FSharp
+open Couchbase.Lite
 open Newtonsoft.Json
+open System.Collections.Generic
 open System.IO
 open System.Runtime.Serialization
+
 open Types.Recipe
+
+let mutable databaseDict: Dictionary<string, Database> = null
 
 [<DataContract>]
 type SaveFile =
@@ -13,6 +19,9 @@ type SaveFile =
         [<field: DataMember>]
         recipes: T list;
     }
+
+let initialize () =
+    databaseDict <- Modules.initialize ()
 
 let wrap recipes =
     {

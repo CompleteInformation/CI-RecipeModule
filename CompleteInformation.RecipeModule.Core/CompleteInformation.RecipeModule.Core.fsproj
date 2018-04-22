@@ -1,16 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="../paket-files/github.com/CompleteInformation/CI-Core/CompleteInformation.Core/CompleteInformation.Core.fsproj">
+      <Name>CompleteInformation.Core.fsproj</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Module.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="Saving.fs" />
     <Compile Include="API.fs" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
