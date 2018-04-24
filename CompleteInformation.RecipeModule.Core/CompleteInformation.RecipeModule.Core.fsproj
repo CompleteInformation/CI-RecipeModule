@@ -1,6 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PackageId>CompleteInformation.RecipeModule.Core</PackageId>
+    <Version>0.3.0</Version>
+    <Authors>NicoVIII</Authors>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../paket-files/github.com/CompleteInformation/CI-Core/CompleteInformation.Core/CompleteInformation.Core.fsproj">
