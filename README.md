@@ -1,4 +1,5 @@
 # Complete Information - Recipes
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![GitHub release](https://img.shields.io/github/release/CompleteInformation/CI-RecipeModule.svg)]()
 [![Github Releases](https://img.shields.io/github/downloads/CompleteInformation/CI-RecipeModule/total.svg)]()
 [![CodeFactor (master)](https://www.codefactor.io/repository/github/completeinformation/ci-recipemodule/badge/master)](https://www.codefactor.io/repository/github/completeinformation/ci-recipemodule/overview/master)
