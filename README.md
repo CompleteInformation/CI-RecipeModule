@@ -1,8 +1,9 @@
 # Complete Information - Recipes
-[![GitHub release](https://img.shields.io/github/release/NicoVIII/CompleteInformation.svg)]()
-[![Github Releases](https://img.shields.io/github/downloads/NicoVIII/CompleteInformation/total.svg)]()
-[![CodeFactor (master)](https://www.codefactor.io/repository/github/nicoviii/completeinformation/badge/master)](https://www.codefactor.io/repository/github/nicoviii/completeinformation/overview/master)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/NicoVIII/CompleteInformation/master/LICENSE.txt)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![GitHub release](https://img.shields.io/github/release/CompleteInformation/CI-RecipeModule.svg)]()
+[![Github Releases](https://img.shields.io/github/downloads/CompleteInformation/CI-RecipeModule/total.svg)]()
+[![CodeFactor (master)](https://www.codefactor.io/repository/github/completeinformation/ci-recipemodule/badge/master)](https://www.codefactor.io/repository/github/completeinformation/ci-recipemodule/overview/master)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/CompleteInformation/CI-RecipeModule/master/LICENSE.txt)
 
 This project intends to provide a tool for managing own recipes.
 
@@ -19,10 +20,10 @@ This project intends to provide a tool for managing own recipes.
     Type 'help' and have a look at your options.
 
 ## Development
-[![Build Status (Windows)](https://img.shields.io/appveyor/ci/NicoVIII/CompleteInformation.svg?logo=appveyor&label=build%20(windows))](https://ci.appveyor.com/project/NicoVIII/CompleteInformation)
-[![Build Status (Unix)](https://img.shields.io/travis/NicoVIII/CompleteInformation.svg?label=build%20(unix))](https://travis-ci.org/NicoVIII/CompleteInformation)
-[![GitHub issues](https://img.shields.io/github/issues/NicoVIII/CompleteInformation.svg)](https://github.com/NicoVIII/CompleteInformation/issues)
-[![CodeFactor (develop)](https://www.codefactor.io/repository/github/nicoviii/completeinformation/badge/develop)](https://www.codefactor.io/repository/github/nicoviii/completeinformation/overview/develop)
+[![Build Status (Windows)](https://img.shields.io/appveyor/ci/NicoVIII/ci-recipemodule/develop.svg?logo=appveyor&label=build%20(windows))](https://ci.appveyor.com/project/NicoVIII/ci-recipemodule)
+[![Build Status (Unix)](https://img.shields.io/travis/CompleteInformation/CI-RecipeModule/develop.svg?label=build%20(unix))](https://travis-ci.org/CompleteInformation/CI-RecipeModule/branches)
+[![GitHub issues](https://img.shields.io/github/issues/CompleteInformation/CI-RecipeModule.svg)](https://github.com/CompleteInformation/CI-RecipeModule/issues)
+[![CodeFactor (develop)](https://www.codefactor.io/repository/github/completeinformation/ci-recipemodule/badge/develop)](https://www.codefactor.io/repository/github/completeinformation/ci-recipemodule/overview/develop)
 
 ### Versioning
 I will try to stick to Semantic Versioning 2.0.0 (http://semver.org/spec/v2.0.0.html).
