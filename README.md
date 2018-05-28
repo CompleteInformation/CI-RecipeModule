@@ -22,7 +22,7 @@ This project intends to provide a tool for managing own recipes.
 
 ## Development
 [![Build Status (Windows)](https://img.shields.io/appveyor/ci/NicoVIII/ci-recipemodule/develop.svg?logo=appveyor&label=build%20(windows))](https://ci.appveyor.com/project/NicoVIII/ci-recipemodule)
-[![Build Status (Unix)](https://img.shields.io/travis/CompleteInformation/CI-RecipeModule/develop.svg?label=build%20(unix))](https://travis-ci.org/CompleteInformation/CI-RecipeModule/branches)
+[![Build Status (Unix)](https://img.shields.io/travis/CompleteInformation/CI-RecipeModule/develop.svg?logo=travis&label=build%20(unix))](https://travis-ci.org/CompleteInformation/CI-RecipeModule/branches)
 [![GitHub issues](https://img.shields.io/github/issues/CompleteInformation/CI-RecipeModule.svg)](https://github.com/CompleteInformation/CI-RecipeModule/issues)
 [![CodeFactor (develop)](https://www.codefactor.io/repository/github/completeinformation/ci-recipemodule/badge/develop)](https://www.codefactor.io/repository/github/completeinformation/ci-recipemodule/overview/develop)
 
