@@ -17,4 +17,10 @@
     <Compile Include="API.fs" />
   </ItemGroup>
   <Import Project="..\.paket\Paket.Restore.targets" />
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CI-Core\CompleteInformation.Core\CompleteInformation.Core.fsproj" />
+  </ItemGroup>
 </Project>

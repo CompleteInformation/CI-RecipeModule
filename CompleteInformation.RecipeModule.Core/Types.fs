@@ -1,5 +1,24 @@
 namespace CompleteInformation.RecipeModule.Core.FSharp.Types
 
+open CompleteInformation.Core.FSharp
+
+module RecipeApplication =
+    type T = {
+        coreApplication: Application.T;
+    }
+
+    let create core =
+        {
+            coreApplication = core;
+        }
+
+    let createTmp databases =
+        {
+            coreApplication =
+                Application.createSetup databases []
+                |> Application.setUpApplication
+        }
+
 module Recipe =
     type T =
         {

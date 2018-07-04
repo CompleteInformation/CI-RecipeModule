@@ -2,6 +2,7 @@ namespace CompleteInformation.RecipeModule.Core
 
 module FRecipe = CompleteInformation.RecipeModule.Core.FSharp.Types.Recipe
 module FSaving = CompleteInformation.RecipeModule.Core.FSharp.Saving
+module FRecipeApplication = CompleteInformation.RecipeModule.Core.FSharp.Types.RecipeApplication
 
 type Recipe(wrapped) =
     let mutable wrapped = wrapped
@@ -24,3 +25,11 @@ type Recipe(wrapped) =
 type Saving =
     static member LoadRecipes () = FSaving.load () |> List.map (fun r -> Recipe(r)) |> List.toArray
     static member SaveRecipes (recipes: Recipe[]) = List.ofArray recipes |> List.map (fun r -> r.Wrapped) |> FSaving.save
+
+type RecipeApplication(wrapped:FRecipeApplication.T) =
+    let mutable wrapped = wrapped
+
+    new () = RecipeApplication(FRecipeApplication.createTmp [])
+
+    member __.CoreApplication
+        with get () = wrapped.coreApplication
