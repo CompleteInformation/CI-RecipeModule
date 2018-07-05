@@ -20,9 +20,6 @@ type SaveFile =
         recipes: T list;
     }
 
-let initialize () =
-    databaseDict <- Modules.initialize ()
-
 let wrap recipes =
     {
         version = 1;
