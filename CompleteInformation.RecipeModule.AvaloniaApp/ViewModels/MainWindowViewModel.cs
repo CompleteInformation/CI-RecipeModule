@@ -128,7 +128,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
         public MainWindowViewModel()
         {
             this.ActiveRecipe = new ActiveRecipeViewModel();
-            this.Recipes = new ReactiveList<Recipe>(Saving.LoadRecipes());
+            this.Recipes = new ReactiveList<Recipe>(ViewModelBase.application.LoadRecipes());
             if (this.Recipes.Count > 0) {
                 this.SelectedRecipe = this.Recipes[0];
             }
@@ -138,7 +138,7 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 
         public void Save()
         {
-            Saving.SaveRecipes(this.Recipes.ToArray());
+            ViewModelBase.application.SaveRecipes(this.Recipes.ToArray());
         }
     }
 }

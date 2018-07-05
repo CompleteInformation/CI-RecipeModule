@@ -2,8 +2,8 @@ module CompleteInformation.ConsoleGUI.Main
 
 open CompleteInformation.RecipeModule.ConsoleApp
 open CompleteInformation.RecipeModule.Core.FSharp
-open CompleteInformation.RecipeModule.Core.FSharp.Types
 open System
+open CompleteInformation.RecipeModule.Core
 
 let (|Int|_|) str =
    match System.Int32.TryParse(str) with
@@ -79,7 +79,7 @@ let unload state =
         recipe::recipeList
     | None -> recipeList
 
-let handleInput state input =
+let handleInput app state input =
     let (active, recipeList) = state
     match (Helper.Console.splitCommandAndArguments input, active) with
     | (("create", [name]), _) ->
@@ -91,7 +91,7 @@ let handleInput state input =
         showHelp()
         state
     | (("ingredients", ["add";ingredient]), Some recipe) ->
-        let recipe = Recipe.addIngredient recipe ingredient
+        let recipe = Recipe.addIngredient ingredient recipe
         printfn "Ingredient added."
         (Some recipe, recipeList)
     | (("ingredients", ["clear"]), Some recipe) ->
@@ -112,7 +112,7 @@ let handleInput state input =
         | (None, _) -> ()
         state
     | (("name", ["set";name]), Some recipe) ->
-        let recipe = Recipe.setName recipe name
+        let recipe = Recipe.setName name recipe
         printfn "New name set."
         (Some recipe, recipeList)
     | (("show", []), Some recipe) ->
@@ -124,16 +124,14 @@ let handleInput state input =
         state
     | (("save", []), _) ->
         unload state
-        |> Saving.save
+        |> Recipe.SaveLoad.save app
         state
     | (("text", ["set"]), Some recipe) ->
-        let recipe =
-            Helper.Console.getText()
-            |> Recipe.setText recipe
+        let recipe = Recipe.setText (Helper.Console.getText()) recipe
         printfn "New text set."
         (Some recipe, recipeList)
     | (("text", ["set"; text]), Some recipe) ->
-        let recipe = Recipe.setText recipe text
+        let recipe = Recipe.setText text recipe
         printfn "New text set."
         (Some recipe, recipeList)
     | (("unload", []), Some recipe) ->
@@ -143,20 +141,21 @@ let handleInput state input =
         printfn "Invalid input, use help to get a overview over valid commands. Maybe you did not load a recipe or used a wrong amount of arguments?"
         state
 
-let rec mainLoop state =
+let rec mainLoop app state =
     printf "> "
     let input = Console.ReadLine()
     match input with
     | "quit" | "exit" ->
         unload state
-        |> Saving.save
+        |> Recipe.SaveLoad.save app
         0
     | input ->
-        handleInput state input
-        |> mainLoop
+        handleInput app state input
+        |> mainLoop app
 
 [<EntryPoint>]
 let main _ =
-    let recipeList = Saving.load()
+    let app = RecipeApplication.create ()
+    let recipeList = Recipe.SaveLoad.load app
     printfn ""
-    mainLoop (None, recipeList)
+    mainLoop app (None, recipeList)

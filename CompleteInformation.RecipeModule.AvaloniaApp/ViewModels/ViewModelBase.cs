@@ -8,13 +8,11 @@ namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels
 {
     public class ViewModelBase : ReactiveObject
     {
-        private readonly RecipeApplication application;
+        protected static readonly RecipeApplication application;
 
-        protected ViewModelBase()
+        static ViewModelBase()
         {
-            if (application == null) {
-                application = new RecipeApplication();
-            }
+            application = new RecipeApplication();
         }
     }
 }
