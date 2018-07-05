@@ -5,4 +5,4 @@ nuget FSharp.Core ~> 4.3
 nuget Microsoft.Composition ~> 1.0
 nuget Newtonsoft.Json
 
-git https://github.com/CompleteInformation/CI-Core.git develop
+github CompleteInformation/CI-Core:develop

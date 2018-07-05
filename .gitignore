@@ -3,3 +3,4 @@
 packages/*
 recipes.json
 release.zip
+/paket-files/
