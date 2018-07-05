@@ -86,14 +86,15 @@ module Recipe =
 
         let load (app:RecipeApplication.T) :T list =
             let db = Map.find "recipes" app.core.databases
-            use query = QueryBuilder.Select().From(DataSource.Database(db))
+            use query = QueryBuilder.Select(SelectResult.All()).From(DataSource.Database(db))
 
             query.Execute()
             |> List.ofSeq
             |> List.map (fun recipe ->
-                create (recipe.GetString ("name"))
-                |> setId (recipe.GetString ("_id"))
-                |> setText (recipe.GetString ("text"))
-                |> setIngredients (recipe.GetArray("ingredients").ToList() |> Seq.cast<string> |> List.ofSeq)
+                let dict = recipe.GetDictionary("recipes")
+                create (dict.GetString ("name"))
+                |> setId (dict.GetString ("id"))
+                |> setText (dict.GetString ("text"))
+                |> setIngredients (dict.GetArray("ingredients").ToList() |> Seq.cast<string> |> List.ofSeq)
             )
 

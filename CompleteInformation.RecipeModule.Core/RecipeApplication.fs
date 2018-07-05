@@ -8,6 +8,7 @@ module RecipeApplication =
     }
 
     let create () =
+        Couchbase.Lite.Support.NetDesktop.Activate();
         {
             core =
                 Application.createSetup ["recipes"] []
