@@ -5,7 +5,7 @@ open CompleteInformation.RecipeModule.Core.FSharp
 open System
 open CompleteInformation.RecipeModule.Core
 
-let (|Int|_|) str =
+let (|Int|_|) (str :string) =
    match System.Int32.TryParse(str) with
    | (true,int) -> Some(int)
    | _ -> None
