@@ -1,7 +1,9 @@
-﻿using System;
+﻿using ReactiveUI;
+using ReactiveUI.Legacy;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using ReactiveUI;
+
 using CompleteInformation.RecipeModule.Core;
 
 namespace CompleteInformation.RecipeModule.AvaloniaApp.ViewModels

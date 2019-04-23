@@ -1,7 +1,0 @@
-storage: none
-source https://www.nuget.org/api/v2
-nuget Couchbase.Lite ~> 2.0
-nuget Couchbase.Lite.Support.NetDesktop ~> 2.0
-nuget FSharp.Core ~> 4.5
-
-github CompleteInformation/CI-Core:develop

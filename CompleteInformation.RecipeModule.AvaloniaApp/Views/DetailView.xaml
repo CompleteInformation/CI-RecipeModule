@@ -1,15 +1,15 @@
 <UserControl x:Class="CompleteInformation.RecipeModule.AvaloniaApp.Views.DetailView"
-    xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:converter="clr-namespace:CompleteInformation.RecipeModule.AvaloniaApp.Converter;assembly=CompleteInformation.RecipeModule.AvaloniaApp"
-    xmlns:core="clr-namespace:CompleteInformation.RecipeModule.Core;assembly=CompleteInformation.RecipeModule.Core">
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:converter="clr-namespace:CompleteInformation.RecipeModule.AvaloniaApp.Converter;assembly=CompleteInformation.RecipeModule.AvaloniaApp"
+  xmlns:core="clr-namespace:CompleteInformation.RecipeModule.Core;assembly=CompleteInformation.RecipeModule.Core">
   <Grid IsVisible="{Binding SelectedRecipe, Converter={x:Static converter:IsNotNullConverter.Instance}}">
-    <StackPanel Orientation="Vertical" Gap="8">
-      <StackPanel Orientation="Horizontal" Gap="4">
+    <StackPanel Orientation="Vertical" Spacing="8">
+      <StackPanel Orientation="Horizontal" Spacing="4">
         <Button Content="Bearbeiten" Command="{Binding ToggleEditMode}"></Button>
       </StackPanel>
       <TextBlock Classes="Title" Text="{Binding ActiveRecipe.Name}"/>
-      <StackPanel Orientation="Vertical" Gap="0">
+      <StackPanel Orientation="Vertical" Spacing="0">
         <TextBlock Classes="Heading" Text="Zutaten:"/>
         <ItemsControl Items="{Binding ActiveRecipe.Ingredients}">
           <ItemsControl.DataTemplates>
@@ -19,7 +19,7 @@
           </ItemsControl.DataTemplates>
         </ItemsControl>
       </StackPanel>
-      <StackPanel Orientation="Vertical" Gap="0">
+      <StackPanel Orientation="Vertical" Spacing="0">
         <TextBlock Classes="Heading" Text="Text:"/>
         <TextBlock Text="{Binding ActiveRecipe.Text}" TextWrapping="Wrap"/>
       </StackPanel>

@@ -1,19 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-    <PackageId>CompleteInformation.RecipeModule.Core</PackageId>
-    <Version>0.3.0</Version>
-    <Authors>NicoVIII</Authors>
-  </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="../paket-files/CompleteInformation/CI-Core/CompleteInformation.Core/CompleteInformation.Core.fsproj">
-      <Name>CompleteInformation.Core.fsproj</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="RecipeApplication.fs" />
-    <Compile Include="Recipe.fs" />
-    <Compile Include="API.fs" />
-  </ItemGroup>
-  <Import Project="..\.paket\Paket.Restore.targets" />
+    <PropertyGroup>
+        <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
+        <PackageId>CompleteInformation.RecipeModule.Core</PackageId>
+        <Version>0.3.0</Version>
+        <Authors>NicoVIII</Authors>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Include="RecipeApplication.fs" />
+        <Compile Include="Recipe.fs" />
+        <Compile Include="API.fs" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Couchbase.Lite.Support.NetDesktop" Version="2.1.*" />
+    </ItemGroup>
+    <ItemGroup>
+        <!-- TODO: temporary reference -->
+        <ProjectReference Include="../../CI-Core/CompleteInformation.Core/CompleteInformation.Core.fsproj" />
+    </ItemGroup>
 </Project>
