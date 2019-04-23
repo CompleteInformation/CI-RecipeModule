@@ -1,4 +1,5 @@
 #!/bin/bash
+#TODO: migrate to FAKE
 dotnet restore
 dotnet publish -c Release
 

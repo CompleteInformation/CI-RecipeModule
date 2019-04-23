@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (avalonia)",
+            "name": "AvaloniaApp",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "buildAvalonia",
@@ -15,16 +15,5 @@
             "stopAtEntry": false,
             "console": "internalConsole"
         },
-        {
-            "name": ".NET Core Launch (console)",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "buildConsole",
-            "program": "${workspaceRoot}/CompleteInformation.RecipeModule.ConsoleApp/bin/Debug/netcoreapp2.1/CompleteInformation.RecipeModule.ConsoleApp.dll",
-            "args": [],
-            "cwd": "${workspaceRoot}",
-            "stopAtEntry": false,
-            "console": "integratedTerminal"
-        }
     ]
 }

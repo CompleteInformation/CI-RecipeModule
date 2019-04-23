@@ -4,43 +4,13 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "buildConsole",
-            "command": "dotnet build CompleteInformation.RecipeModule.ConsoleApp/CompleteInformation.RecipeModule.ConsoleApp.fsproj",
-            "type": "shell",
-            "group": "build",
-            "presentation": {
-                "reveal": "silent"
-            },
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "publishConsole",
-            "command": "dotnet publish CompleteInformation.RecipeModule.ConsoleApp/CompleteInformation.RecipeModule.ConsoleApp.fsproj -c Release",
-            "type": "shell",
-            "group": "build",
-            "presentation": {
-                "reveal": "silent"
-            },
-            "problemMatcher": "$msCompile"
-        },
-        {
             "label": "buildAvalonia",
-            "command": "dotnet build CompleteInformation.RecipeModule.AvaloniaApp/CompleteInformation.RecipeModule.AvaloniaApp.csproj",
+            "command": "./fake.sh build",
+            "windows": {
+                "command": "./fake.cmd build",
+            },
             "type": "shell",
             "group": "build",
-            "presentation": {
-                "reveal": "silent"
-            },
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "publishAvalonia",
-            "command": "dotnet publish CompleteInformation.RecipeModule.AvaloniaApp/CompleteInformation.RecipeModule.AvaloniaApp.csproj -c Release",
-            "type": "shell",
-            "group": "build",
-            "presentation": {
-                "reveal": "silent"
-            },
             "problemMatcher": "$msCompile"
         }
     ]
