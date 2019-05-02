@@ -77,7 +77,7 @@ module Recipe =
             match recipe.recipetext with
             | Some s -> document.SetString ("text", s) |> ignore
             | None -> ()
-            document.SetArray("ingredients", new MutableArrayObject(recipe.ingredients |> List.toArray)) |> ignore
+            document.SetArray("ingredients", MutableArrayObject(recipe.ingredients |> List.toArray)) |> ignore
             db.Save document
 
         let save app =
