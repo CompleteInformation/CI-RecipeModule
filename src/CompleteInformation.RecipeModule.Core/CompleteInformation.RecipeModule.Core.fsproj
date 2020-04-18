@@ -7,4 +7,5 @@
     <Compile Include="Types.fs" />
     <Compile Include="Ingredient.fs" />
   </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
