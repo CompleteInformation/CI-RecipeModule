@@ -14,5 +14,6 @@ module Persistence =
         File.WriteAllText (filePath, json)
 
     let loadRecipeList () =
+        // TODO: handle case, where file is missing
         File.ReadAllText filePath
         |> Json.deserialize<Recipe list>
