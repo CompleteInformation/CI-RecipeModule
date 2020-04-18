@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Karoffelkuchen",
+    "segments": [
+      {
+        "steps": []
+      },
+      {
+        "steps": [
+          {
+            "ingredients": [
+              {
+                "name": "Karotten",
+                "amount": {
+                  "Weight": 500
+                }
+              }
+            ],
+            "text": "Karotten schneiden"
+          },
+          {
+            "ingredients": [
+              {
+                "name": "Kartoffeln",
+                "amount": {
+                  "Weight": 200
+                }
+              },
+              {
+                "name": "Karotten",
+                "amount": {
+                  "Weight": 5
+                }
+              }
+            ],
+            "text": "Kartoffeln schneiden"
+          }
+        ]
+      }
+    ]
+  }
+]
