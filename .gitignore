@@ -1,4 +1,5 @@
-bin/*
-obj/*
-.paket/*
-packages/*
+bin/
+obj/
+.paket/
+packages/
+.ionide/
