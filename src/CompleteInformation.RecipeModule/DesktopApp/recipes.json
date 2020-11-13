@@ -3,9 +3,40 @@
     "name": "Karoffelkuchen",
     "segments": [
       {
-        "steps": []
+        "title": "Putzen",
+        "steps": [
+            {
+              "ingredients": [
+                {
+                  "name": "Kartoffeln",
+                  "amount": {
+                    "Weight": 200
+                  }
+                },
+                {
+                  "name": "Karotten",
+                  "amount": {
+                    "Weight": 5
+                  }
+                }
+              ],
+              "text": "Kartoffeln putzen"
+            },
+            {
+                "ingredients": [
+                  {
+                    "name": "Karotten",
+                    "amount": {
+                      "Weight": 500
+                    }
+                  }
+                ],
+                "text": "Karotten putzen"
+            }
+        ]
       },
       {
+        "title": "Schneiden",
         "steps": [
           {
             "ingredients": [

@@ -53,7 +53,7 @@ NUGET
       Avalonia.Skia (>= 0.9.12)
     Elmish (3.0.6)
       FSharp.Core (>= 4.6.2)
-    FSharp.Core (4.7.1)
+    FSharp.Core (5.0)
     FSharp.Json (0.4)
       FSharp.Core (>= 4.6.2)
     JaggerJo.Avalonia.FuncUI (0.4.1)

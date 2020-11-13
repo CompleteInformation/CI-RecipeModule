@@ -15,11 +15,13 @@ module Types =
     }
 
     type Step = {
+        title: string option
         ingredients: Ingredient list
         text: string
     }
 
     type Segment = {
+        title: string
         steps: Step list
     }
 
