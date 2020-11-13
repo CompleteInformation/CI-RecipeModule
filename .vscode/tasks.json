@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet build",
+            "type": "shell",
+            "args": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {},
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "windows": {
+                "command": "dotnet build",
+                "options": {
+                    "cwd": "./src/CompleteInformation.RecipeModule/DesktopApp/"
+                }
+            }
+        },
+        {
+            "label": "restore",
+            "command": "dotnet tool restore && dotnet paket restore",
+            "type": "shell",
+            "args": [],
+            "group": "none",
+            "options": {},
+            "problemMatcher": [
+                "$msCompile"
+            ]
+        }
+    ]
+}

@@ -17,7 +17,10 @@ RUN bash /tmp/library-scripts/common-debian.sh "${INSTALL_ZSH}" "${USERNAME}" "$
 
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends bash-completion nano
+    && apt-get -y install --no-install-recommends bash-completion nano \
+    #
+    # Provide dependencies for gui application
+    && apt-get -y install xorg
 
 # Add autocomplete for git in terminal
 RUN echo "source /usr/share/bash-completion/completions/git" > /root/.bashrc
