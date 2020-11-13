@@ -36,9 +36,19 @@ module Main =
     let update (msg: Msg) (state: State) =
         match msg with
         | UpdateChoosenRecipe index ->
-            { state with choosenRecipe = Some index }, Cmd.none
+            let state =
+                if index >= 0 then
+                    { state with choosenRecipe = Some index }
+                else
+                    state
+            state, Cmd.none
         | UpdateChoosenSegment index ->
-            { state with choosenSegment = Some index }, Cmd.none
+            let state =
+                if index >= 0 then
+                    { state with choosenSegment = Some index }
+                else
+                    state
+            state, Cmd.none
 
     let recipeItemView recipe =
         TextBlock.create [
